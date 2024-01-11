@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import LoginButton from './components/Login/Login'
 import './App.css'
-import { UserProvider } from './context/UserContext'
+
 import { useUserContext } from './context/UserContext'
 import { GoogleLogout } from 'react-google-login'
 const clientId =
