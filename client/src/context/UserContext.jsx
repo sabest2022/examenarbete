@@ -24,10 +24,11 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         checkAuthStatus()
-    }, [])
+    }, []);
 
     const login = async (tokenId) => {
         try {
+            console.log("token trigger");
             const response = await axios.post(
                 'http://localhost:3000/api/google-login',
                 { token: tokenId },

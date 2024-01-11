@@ -3,7 +3,7 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 
 require("dotenv").config();
-const { userRouter } = require("./route/User");
+const { userRouter } = require("./user/user.router");
 const database = require("./database/config");
 const app = express();
 app.use(express.json());
@@ -12,7 +12,7 @@ app.use(
     cookieSession({
         name: "session",
         keys: ["aVeryS3cr3tK3y"],
-        maxAge: 1000 * 60 * 60 * 24, // 24 Hours
+        maxAge: 1000 * 60, // 24 Hours
         sameSite: "strict",
         httpOnly: true,
         secure: false,

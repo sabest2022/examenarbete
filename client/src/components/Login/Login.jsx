@@ -10,6 +10,7 @@ function Login() {
     const { isSignedIn, login } = useUserContext()
 
     const onSuccess = async (res) => {
+        console.log('onSuccess triggers',)
         await login(res.tokenId)
     }
 
