@@ -29,16 +29,16 @@ async function googleLogin(req, res) {
         user = await UserModel.create({
           name: googleUser.name,
           email: googleUser.email,
-          imageUrl: googleUser.picture,
-          balance: 0,
+          imageUrl: googleUser.picture
         });
         console.log("have not find the user, so created it!");
       }
 
       req.session.user = user;
     } catch (error) {
-      res.status(401).json({ message: "Login failed" });
-      console.log("error so login failed!");
+      console.log("error so login failed!", error);
+      res.status(401).json({ message: "Login failed", error: error.message });
+
       return;
     }
 
