@@ -48,6 +48,7 @@ async function googleLogin(req, res) {
   }
 }
 
+
 async function googleLogout(req, res) {
   try {
     if (!req.session) {
