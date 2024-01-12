@@ -1,0 +1,58 @@
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    /* This stacks children elements vertically */
+    align-items: center;
+    /* Aligns children in the center */
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* This also stacks children elements vertically */
+    align-items: center;
+    /* Aligns children in the center */
+    text-align: center;
+    /* Center text for all child elements */
+    margin-bottom: 5px;
+    /* Adds space between content and social icons */
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    /* Center the navigation links horizontally */
+    gap: 20px;
+    /* Space between links */
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    /* Center the icons horizontally */
+    gap: 20px;
+    /* Space between icons */
+}
+
+.social-icons a {
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 24px;
+    /* Size of icons */
+    height: auto;
+}
