@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
     const checkAuthStatus = async () => {
         try {
             const { data } = await axios.get(
-                'http://localhost:3000/api/google-authorize',
+                'http://localhost:3000/api/users/google-authorize',
                 { withCredentials: true },
             )
 
@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
         try {
             console.log("token trigger");
             const response = await axios.post(
-                'http://localhost:3000/api/google-login',
+                'http://localhost:3000/api/users/google-login',
                 { token: tokenId },
                 { withCredentials: true },
             )
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
     const logout = async () => {
         try {
             const response = await axios.post(
-                'http://localhost:3000/api/google-logout',
+                'http://localhost:3000/api/users/google-logout',
                 null,
                 { withCredentials: true },
             )
@@ -61,7 +61,7 @@ export const UserProvider = ({ children }) => {
     const getUser = async (userId) => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/user/${userId}`,
+                `http://localhost:3000/api/users/user/${userId}`,
             )
 
             setCurrentUser(response.data)
