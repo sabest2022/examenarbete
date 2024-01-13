@@ -28,21 +28,21 @@ const Header = () => {
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
-            <div className="login-button">
-                <div id="signinbutton">
-                    {!isSignedIn ? (
-                        <LoginButton />
-                    ) : (
-                        <GoogleLogout
-                            clientId="your-client-id"
-                            buttonText="Logout"
-                            onLogoutSuccess={onLogoutSuccess}
-                        // style={{ backgroundColor: '#000', color: '#fff', border: 'none' }}
-                        // You may need to style this button directly or through a custom class
-                        />
-                    )}
-                </div>
+
+            <div id="signinbutton">
+                {!isSignedIn ? (
+                    <LoginButton />
+                ) : (
+                    <GoogleLogout
+                        clientId="your-client-id"
+                        buttonText="Logout"
+                        onLogoutSuccess={onLogoutSuccess}
+                    // style={{ backgroundColor: '#000', color: '#fff', border: 'none' }}
+                    // You may need to style this button directly or through a custom class
+                    />
+                )}
             </div>
+
         </header>
     );
 };

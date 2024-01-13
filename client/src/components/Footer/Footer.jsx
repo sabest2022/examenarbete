@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-content">
                 <div className="footer-info">
-                    <span>WebFX® 1995-2024   </span>
+                    <span>Sabest® 2023-2024   </span>
                     <a href="/privacy">      Privacy & Terms of Use</a>
                 </div>
                 <div className="social-icons">

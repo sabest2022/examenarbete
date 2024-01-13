@@ -5,6 +5,9 @@ import Footer from './components/Footer/Footer'
 import './App.css'
 
 
+
+
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -13,14 +16,12 @@ function App() {
 
       <Header />
       <main style={{ flex: 1 }}>
-        <h1>Vite + React</h1>
+
         <div className="card">
           <button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </button>
-          <p>
-            This is a template to develop with Vite-React + Express + Mongos frameworks
-          </p>
+
 
         </div>
       </main>

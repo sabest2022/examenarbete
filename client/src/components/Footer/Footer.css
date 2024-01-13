@@ -22,6 +22,10 @@
     /* Adds space between content and social icons */
 }
 
+.footer-info {
+    font-size: 1vw;
+}
+
 .footer-nav {
     display: flex;
     justify-content: center;
