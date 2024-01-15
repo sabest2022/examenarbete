@@ -7,15 +7,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Services.css'
 
-// import './Services.css'
-const HomeSection = ({ title, children }) => {
-    return (
-        <section className="home-section">
-            <h2>{title}</h2>
-            <div>{children}</div>
-        </section>
-    );
-};
 const Plan = ({ plan }) => {
     return (
         <div className="plan-container">
@@ -46,9 +37,7 @@ const Services = () => {
         <div className="home">
             <Header />
             <main className="home-content">
-                <HomeSection title="Welcome to Sabest">
-                    <p>At Sabest, This is services page</p>
-                </HomeSection>
+
                 <h1>Our Plans</h1>
                 {error && <p>There was an error fetching the plans: {error}</p>}
                 <div className="plans-list">
