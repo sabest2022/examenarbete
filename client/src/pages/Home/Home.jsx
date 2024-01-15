@@ -1,14 +1,16 @@
 
 import React from 'react';
+
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import background from '../../assets/background.png';
+import './Home.css'
 
 const Home = () => {
     return (
-        <div className="app" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div className="home" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
             <Header />
-            <main >
+            <main style={{ flex: 1 }} >
 
             </main>
 
