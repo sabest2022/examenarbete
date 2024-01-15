@@ -1,0 +1,13 @@
+POST http://localhost:3000/api/plans/
+Content-Type: application/json
+
+{
+    "title": "Starter Plan",
+    "description": "TFor those stepping into the digital world, our Starter Plan provides the essentials of web presence. It's perfect for new businesses or personal brands looking to establish themselves online with a professional look.",
+    "price": 3990,
+    "image": "url_to_image_if_applicable",
+    "responsive": true,
+    "pages": 5
+}
+###
+

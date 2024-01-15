@@ -33,6 +33,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import Admin from './pages/Admin/Admin';
+import Services from './pages/Services/Services';
+import Contact from './pages/Contact/Contact';
+import About from './pages/About/About';
+
 
 function App() {
   return (
@@ -41,6 +45,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
         {/* Define more routes as needed */}
       </Routes>
     </Router>

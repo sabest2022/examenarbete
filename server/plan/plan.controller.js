@@ -1,6 +1,6 @@
 // ----- Imports model
 
-const { planModel } = require("./plan.model");
+const { PlanModel } = require("./plan.model");
 
 // ----- Get all plans from DB
 
@@ -31,7 +31,7 @@ async function getplanID(req, res, next) {
 
 async function getplanByCat(req, res, next) {
     try {
-        const plans = await planModel.find({ categories: req.params.id });
+        const plans = await PlanModel.find({ categories: req.params.id });
         res.status(200).json(plans);
     } catch (err) {
         res.status(404).json(err);
@@ -42,7 +42,7 @@ async function getplanByCat(req, res, next) {
 
 async function createplan(req, res, next) {
     try {
-        const plan = await planModel.create(req.body);
+        const plan = await PlanModel.create(req.body);
         res.status(201).json(plan);
     } catch {
         res.status(403).json("not found");
@@ -53,7 +53,7 @@ async function createplan(req, res, next) {
 
 async function editplan(req, res, next) {
     try {
-        const updatedData = await planModel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
+        const updatedData = await PlanModel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
         if (!updatedData) { return res.status(404).json(req.params.id + " not found") };
         res.status(200).json(updatedData);
     } catch (err) {
@@ -65,7 +65,7 @@ async function editplan(req, res, next) {
 
 async function deleteplan(req, res, next) {
     try {
-        if ((await planModel.findOne({ _id: req.params.id })) === null) {
+        if ((await PlanModel.findOne({ _id: req.params.id })) === null) {
             return res.status(404).json(req.params.id + " not found");
         };
         await planModel.deleteOne({ _id: req.params.id });
