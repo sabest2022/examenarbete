@@ -10,7 +10,7 @@ async function createOrder(req, res, next) {
     const order = new OrderModel({
       customer: req.session.user._id,
       orderItems: req.body.orderItems,
-      deliveryAddress: req.body.deliveryAddress
+      address: req.body.address
     });
 
     // ----- Loops through order array and then orderItem to decrease inventory in DB and calculates total price for purchased items
@@ -19,7 +19,7 @@ async function createOrder(req, res, next) {
       for (orderItem of items.orderItems) {
         let product = await ProductModel.findById(orderItem.product);
         product.inStock -= orderItem.quantity;
-        orderItem.price = product.price * orderItem.quantity;
+        orderItem.price = product.price
         await product.save();
         order.save();
       };

@@ -4,7 +4,7 @@ const { Schema, model, models } = require('mongoose');
 
 // ----- Schema to create delivery addresses
 
-const deliveryAddressSchema = new Schema({
+const AddressSchema = new Schema({
   street: { type: String, required: true },
   city: { type: String, required: true },
   zipcode: { type: String, required: true }
@@ -13,8 +13,8 @@ const deliveryAddressSchema = new Schema({
 // ----- Schema to create order items
 
 const orderItemSchema = new Schema({
-  product: { type: Schema.Types.ObjectId, ref: 'Plan', required: true },
-  quantity: { type: Number, required: true },
+  plan: { type: Schema.Types.ObjectId, ref: 'Plan', required: true },
+
   price: { type: Number, default: 0 }
 });
 
@@ -24,8 +24,8 @@ const orderSchema = new Schema({
   customer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   orderItems: [orderItemSchema],
   date: { type: Date, default: Date.now },
-  deliveryAddress: [deliveryAddressSchema],
-  shipped: { type: Boolean, default: false },
+  address: [AddressSchema],
+  delivered: { type: Boolean, default: false },
 }, { versionKey: false });
 
 // ----- Checks if "Order" model exist in DB, if not, it creates it
