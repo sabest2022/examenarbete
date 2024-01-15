@@ -6,7 +6,7 @@ const { PlanModel } = require("./plan.model");
 
 async function getplans(req, res, next) {
     try {
-        const plans = await planModel.find();
+        const plans = await PlanModel.find();
         res.status(200).json(plans);
     } catch (err) {
         res.status(404).json(err);
@@ -17,7 +17,7 @@ async function getplans(req, res, next) {
 
 async function getplanID(req, res, next) {
     try {
-        const plans = await planModel.findOne({ _id: req.params.id });
+        const plans = await PlanModel.findOne({ _id: req.params.id });
         if (plans === null) {
             return res.status(404).json(req.params.id + " not found");
         };

@@ -3,7 +3,7 @@ import React from 'react';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import background from '../../assets/background.png';
+
 import './Home.css'
 const HomeSection = ({ title, children }) => {
     return (
