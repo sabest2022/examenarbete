@@ -1,0 +1,10 @@
+.buy {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}

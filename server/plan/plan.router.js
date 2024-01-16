@@ -17,9 +17,9 @@ const planRouter = express
     .Router()
 
     .get("/", getplans)
-    .get("/:id", getplanID)
     .post("/", validate(planJoiSchema), createplan)
-    .put("/:id", isLoggedIn, isAdmin, validate(planJoiSchema), editplan)
+    .get("/:id", getplanID)
+    .put("/:id", validate(planJoiSchema), editplan)
     .delete("/:id", isLoggedIn, isAdmin, deleteplan)
 
 // ----- Exports router

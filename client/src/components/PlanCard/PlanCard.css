@@ -1,0 +1,71 @@
+.plan-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0,
+            0.2);
+    background-color: #f9f9f9;
+    margin: 20px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.plan-img-container {
+    width: 100%;
+    overflow: hidden;
+    /* Ensures the image does not overflow the container */
+}
+
+.plan-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Adjusts image to cover the container */
+}
+
+.plan-details {
+    padding: 10px;
+}
+
+.plan-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+    /* Adjust the size as needed */
+}
+
+.plan-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    /* Adjust the color as needed */
+}
+
+.plan-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.buy-button,
+.info-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.buy-button:hover,
+.info-button:hover {
+    background-color: #0056b3;
+}

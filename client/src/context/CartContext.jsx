@@ -32,7 +32,7 @@ export const CartContext = createContext(initialCartContext);
 export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-    const { getProduct } = usePlanContext();
+    const { getPlan } = usePlanContext();
 
     // Initialize state from local storage
     const [cartItems, setCartItems] = useState(getCartFromLocalStorage());
@@ -41,29 +41,43 @@ export const CartProvider = ({ children }) => {
         setCartInLocalStorage(cartItems);
     }, [cartItems]);
 
-    const addToCart = (productId, quantity) => {
-        const product = getProduct(productId);
-        const existingCartItem = cartItems.find((item) => item.product._id === product._id);
+    const addToCart = async (planId) => {
+        try {
+            const plan = await getPlan(planId);
 
-        if (existingCartItem) {
-            const updatedCartItems = cartItems.map((item) => {
-                if (item.product._id === product._id) {
-                    return { product, quantity: item.quantity + quantity };
+            if (!plan) {
+                console.error('Plan not found!');
+                return;
+            }
+
+            setCartItems((currentItems) => {
+                const existingCartItemIndex = currentItems.findIndex((item) => item.plan && item.plan._id === plan._id);
+
+                if (existingCartItemIndex !== -1) {
+                    // Plan already exists in cart, update the quantity
+                    const updatedItems = [...currentItems];
+                    updatedItems[existingCartItemIndex] = {
+                        ...updatedItems[existingCartItemIndex],
+                        quantity: updatedItems[existingCartItemIndex].quantity + 1
+                    };
+                    return updatedItems;
                 } else {
-                    return item;
+                    // Plan is new to the cart, add it
+                    return [...currentItems, { plan, quantity: 1 }];
                 }
             });
-            setCartItems(updatedCartItems);
-        } else {
-            setCartItems([...cartItems, { product, quantity }]);
+        } catch (error) {
+            console.error('Error adding plan to cart:', error);
         }
     };
 
 
 
-    const removeFromCart = (product) => {
+
+
+    const removeFromCart = (plan) => {
         setCartItems((currentItems) =>
-            currentItems.filter((item) => item.product._id !== product._id)
+            currentItems.filter((item) => item.plan._id !== plan._id)
         );
     };
 

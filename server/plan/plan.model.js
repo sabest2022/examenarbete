@@ -13,7 +13,7 @@ const planSchema = new Schema({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     image: { type: String, required: false },
-    responsive: { type: Number, required: true },
+    responsive: { type: Boolean, required: true },
     pages: { type: Number, required: true }
 }, { versionKey: false });
 
