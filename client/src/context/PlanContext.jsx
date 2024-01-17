@@ -26,7 +26,7 @@ export const PlanProvider = ({ children }) => {
     }
   };
   const getPlan = async (planId) => {
-    console.log(planId);
+
     try {
       const response = await axios.get(`http://localhost:3000/api/plans/${planId}`);
       console.log(response.data);

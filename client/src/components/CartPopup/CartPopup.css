@@ -1,0 +1,145 @@
+.CartPopup__container {
+    background-color: #191919;
+    width: 420px;
+    border-radius: 20px;
+    position: absolute;
+    /* top: 100%; This line is commented out to prevent the popup from being placed too low */
+    right: 0;
+    /* Aligns the popup to the right side */
+    margin-top: 1rem;
+    /* Gives space above the popup */
+    z-index: 10;
+    /* Ensures the popup is above other content */
+    overflow: hidden;
+    /* Ensures no content spills outside the container */
+    display: block;
+    /* Start with the popup not displayed */
+}
+
+.cart-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Spreads the title and close icon apart */
+    padding: 1rem;
+    /* Adds space inside the header */
+    border-bottom: 1px solid #333;
+    /* Adds a divider line */
+}
+
+.cart-item-header h1 {
+    color: white;
+    margin: 0;
+}
+
+.cart-item-header svg {
+    cursor: pointer;
+    color: white;
+}
+
+.cart-items-container {
+    max-height: 60vh;
+    /* Limits the height of the scrollable area */
+    overflow-y: auto;
+    /* Enables scrolling for overflowing content */
+}
+
+.cart-item-card {
+    display: flex;
+    justify-content: space-between;
+    /* Spreads content across the card */
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    /* Adds a divider between items */
+}
+
+.cart-item-info h1,
+.cart-item-info p {
+    color: white;
+    margin: 0;
+}
+
+.cart-item-btns button {
+    background-color: #8A2BE2;
+    /* Purple color */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    /* Adds space to the left of the button */
+}
+
+.cart-item-footer {
+    padding: 1rem;
+    border-top: 1px solid #333;
+    /* Adds a divider above the footer */
+}
+
+.cart-item-footer p {
+    color: white;
+    text-align: center;
+    /* Centers the total price text */
+}
+
+.cart-item-footer-btns {
+    display: flex;
+    justify-content: space-evenly;
+    /* Adds equal space around the buttons */
+}
+
+.cart-item-footer-btns a,
+.cart-item-footer-btns button {
+    background-color: #2b56e2;
+
+    color: white;
+    border: none;
+    padding: 0.3rem .5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-decoration: none;/ Removes underline from links */
+}
+
+.cart-item-footer-btns button:disabled {
+    background-color: #666;
+    /* Greyed out button for disabled state */
+    cursor: not-allowed;
+}
+
+.empty-cart {
+    text-align: center;
+    /* Centers empty cart message and icon */
+    padding: 2rem;
+    color: white;
+}
+
+.empty-cart svg {
+    font-size: 3rem;
+
+    margin-bottom: 1rem;
+}
+
+.CartPopup__container h1 {
+    font-size: 24px;
+    /* Adjust this value as needed for the cart title */
+}
+
+.cart-item-info h1 {
+    font-size: 18px;
+    /* Adjust this value as needed for the plan titles */
+}
+
+.cart-item-info p {
+    font-size: 16px;
+}
+
+.cart-item-footer {
+    font-size: 16px;
+    /* Adjust this value as needed for the total price */
+}
+
+.cart-item-footer-btns button {
+    font-size: 14px;/ Adjust this value as needed for the button text */
+}

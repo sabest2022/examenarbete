@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import { useUserContext } from '../../context/UserContext';
 import LoginButton from '../Login/Login'
 import { GoogleLogout } from 'react-google-login'
+import CartIcon from '../CartIcon/CartIcon';
 // In your component
 
 
@@ -41,6 +42,9 @@ const Header = () => {
                     // You may need to style this button directly or through a custom class
                     />
                 )}
+            </div>
+            <div>
+                <CartIcon />
             </div>
 
         </header>

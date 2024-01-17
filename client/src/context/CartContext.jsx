@@ -54,13 +54,15 @@ export const CartProvider = ({ children }) => {
                 const existingCartItemIndex = currentItems.findIndex((item) => item.plan && item.plan._id === plan._id);
 
                 if (existingCartItemIndex !== -1) {
-                    // Plan already exists in cart, update the quantity
-                    const updatedItems = [...currentItems];
-                    updatedItems[existingCartItemIndex] = {
-                        ...updatedItems[existingCartItemIndex],
-                        quantity: updatedItems[existingCartItemIndex].quantity + 1
-                    };
-                    return updatedItems;
+                    // // Plan already exists in cart, update the quantity
+                    // const updatedItems = [...currentItems];
+                    // updatedItems[existingCartItemIndex] = {
+                    //     ...updatedItems[existingCartItemIndex],
+                    //     quantity: updatedItems[existingCartItemIndex].quantity + 1
+
+                    // };
+                    // return updatedItems;
+                    return currentItems;
                 } else {
                     // Plan is new to the cart, add it
                     return [...currentItems, { plan, quantity: 1 }];
