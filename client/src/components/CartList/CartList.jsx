@@ -41,7 +41,7 @@ const CartList = () => {
                                 <p>{cartItem.quantity}</p>
                             </td>
                             <td className="product_action">
-                                <button onClick={() => addToCart(cartItem.plan._id)}>Add More</button>
+                                {/* <button onClick={() => addToCart(cartItem.plan._id)}>Add More</button> */}
                                 <button onClick={() => removeFromCart(cartItem.plan)}>Remove</button>
                             </td>
                         </tr>

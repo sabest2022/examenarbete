@@ -5,15 +5,17 @@ import './index.css'
 import { UserProvider } from './context/UserContext';
 import { PlanProvider } from './context/PlanContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
+import OrderProvider from './context/OrderContext.jsx';
 
 ReactDOM.render(
-  <PlanProvider>
-    <CartProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </CartProvider>
-  </PlanProvider>,
-
+  <OrderProvider>
+    <PlanProvider>
+      <CartProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </CartProvider>
+    </PlanProvider>
+  </OrderProvider>,
   document.getElementById('root')
 )

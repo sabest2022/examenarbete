@@ -36,6 +36,7 @@ import Admin from './pages/Admin/Admin';
 import Services from './pages/Services/Services';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
+import Checkout from './components/Checkout/Checkout';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* Define more routes as needed */}
       </Routes>
     </Router>

@@ -12,3 +12,33 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/api/plans/65a511289564148c0cd7e58c
+
+
+###
+
+POST http://localhost:3000/api/orders/
+Content-Type: application/json
+
+{
+    "customer": "65a1c4ede0dd131148331f00",
+    "orderItems": [
+        {
+            "plan": "65a511289564148c0cd7e58c",
+            "price": 50000
+        }
+      
+    ],
+    "totalprice": 15000,
+    "date": "2021-01-01T00:00:00.000Z",
+    "address": {
+        "street": "123 Main St",
+        "zipcode": "12345",
+        "city": "Stockholm",
+        "country": "Sweden"
+    },
+    "delivered": false
+}
+ 
+###
+
+GET  http://localhost:3000/api/orders/65a0fecbd21fe005d65dcecc

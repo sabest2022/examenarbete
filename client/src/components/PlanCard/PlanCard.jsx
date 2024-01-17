@@ -37,9 +37,9 @@ function PlanCard({ _id, title, description, price, responsive, pages, plan, ima
                 <div className='button-container'>
                     {/* <div className="buy" onClick={handleDecreaseInStock} >Order</div> */}
                     <BuyProductBtn _id={_id} cssClass="buy" />
-                    <Link to={`/product/${_id}`}>
+                    {/* <Link to={`/product/${_id}`}>
                         <div className="info-button">Mer info</div>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>

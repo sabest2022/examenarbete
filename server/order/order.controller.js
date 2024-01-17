@@ -45,45 +45,61 @@ async function createOrder(req, res, next) {
 
 async function getAllOrders(req, res) {
   try {
+    let query;
+
     if (req.session.user.isAdmin) {
-      const allOrders = await OrderModel.find().populate("customer");
-      return res.status(200).json(allOrders);
-    };
+      // For admin, fetch all orders
+      query = OrderModel.find();
+    } else {
+      // For regular user, fetch only their orders
+      query = OrderModel.find({ customer: req.session.user._id });
+    }
 
-    const user = req.session.user._id;
-    const orders = await OrderModel.find({ user: user });
+    const orders = await query.populate({
+      path: 'customer',
+      select: 'name email' // Adjust fields as needed
+    }).populate({
+      path: 'orderItems.plan',
+      select: 'title price' // Adjust fields as needed
+    });
+
     res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving orders", error: error.message });
+  }
+}
 
-  } catch {
-    res.status(404).json("user has no orders yet.");
-  };
-};
 
 // ----- get a specific user order as admin or a user's own order by ID
 
 async function getOrderId(req, res) {
   try {
-    if (req.session.user.isAdmin) {
-      const order = await OrderModel.findOne({ _id: req.params.id }).populate("customer");
-      if (!order) { return res.status(404).json(req.params.id + " not found") };
-      return res.status(200).json(order);
-    };
+    const userId = req.session.user._id;
+    const isAdmin = req.session.user.isAdmin;
+    const orderId = req.params.id;
 
-    const user = req.session.user._id;
-    const orders = await OrderModel.find({ user: user }).populate("customer");
-    const order = orders.find(element => (req.params.id == element._id));
+    let order;
 
-    if (!order) { return res.status(404).json(req.params.id + " not found") };
-    if (!(order.customer._id == user)) {
-      return res.status(403).json("not user's order!")
-    };
+    if (isAdmin) {
+      order = await OrderModel.findById(orderId)
+        .populate('customer', 'name email') // Adjust fields as needed
+        .populate('orderItems.plan', 'title price'); // Adjust fields as needed
+    } else {
+      order = await OrderModel.findOne({ _id: orderId, customer: userId })
+        .populate('customer', 'name email') // Adjust fields as needed
+        .populate('orderItems.plan', 'title price'); // Adjust fields as needed
+    }
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
 
     res.status(200).json(order);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving order", error: error.message });
+  }
+}
 
-  } catch {
-    res.status(404).json("user has no orders yet.");
-  };
-};
 
 // ----- Marks orders as shipped if admin
 
