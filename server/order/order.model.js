@@ -5,26 +5,32 @@ const { Schema, model, models } = require('mongoose');
 // ----- Schema to create delivery addresses
 
 const AddressSchema = new Schema({
-  street: { type: String, required: true },
-  city: { type: String, required: true },
-  zipcode: { type: String, required: true }
+  street: { type: String },
+  zipcode: { type: String },
+  city: { type: String },
+  country: { type: String }
 });
 
 // ----- Schema to create order items
 
-const orderItemSchema = new Schema({
+const OrderItemSchema = new Schema({
   plan: { type: Schema.Types.ObjectId, ref: 'Plan', required: true },
-
   price: { type: Number, default: 0 }
 });
 
 // ----- Schema to create order
 
 const orderSchema = new Schema({
+  orderNumber: {
+    type: Number,
+    required: true,
+    default: Math.floor(Math.random() * 1000000),
+  },
   customer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  orderItems: [orderItemSchema],
+  orderItems: { type: [OrderItemSchema], required: true },
+  totalprice: { type: Number, required: true },
   date: { type: Date, default: Date.now },
-  address: [AddressSchema],
+  address: { type: AddressSchema },
   delivered: { type: Boolean, default: false },
 }, { versionKey: false });
 

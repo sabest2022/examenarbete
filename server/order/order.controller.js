@@ -1,36 +1,45 @@
 // ----- Imports models
 
 const { OrderModel } = require('./order.model');
-const { ProductModel } = require("../plan/plan.model");
+const { PlanModel } = require("../plan/plan.model");
 
 // ----- Creates a new order
 
 async function createOrder(req, res, next) {
   try {
+    const { customer, orderItems, totalprice, address } = req.body;
+
     const order = new OrderModel({
-      customer: req.session.user._id,
-      orderItems: req.body.orderItems,
-      address: req.body.address
+      customer: customer,
+      orderItems: orderItems,
+      totalprice: totalprice,
+      date: new Date(), // Use server's date or from req.body
+      address: address,
+      delivered: false
     });
 
-    // ----- Loops through order array and then orderItem to decrease inventory in DB and calculates total price for purchased items
+    // Optionally validate each plan and recalculate the total price
+    let recalculatedTotalPrice = 0;
+    for (let orderItem of order.orderItems) {
+      let plan = await PlanModel.findById(orderItem.plan);
+      if (!plan) {
+        return res.status(404).json({ message: 'Plan not found' });
+      }
+      // Recalculate the price for security
+      recalculatedTotalPrice += plan.price;
+    }
 
-    for (items of [order]) {
-      for (orderItem of items.orderItems) {
-        let product = await ProductModel.findById(orderItem.product);
-        product.inStock -= orderItem.quantity;
-        orderItem.price = product.price
-        await product.save();
-        order.save();
-      };
-    };
+    // Optionally, set totalprice to recalculatedTotalPrice for security
+    order.totalprice = recalculatedTotalPrice;
 
+    await order.save();
     res.status(201).json(order);
-
   } catch (err) {
-    res.status(404).json(err);
-  };
-};
+    console.error('Error creating order:', err);
+    res.status(500).json({ message: 'Error creating order', error: err });
+  }
+}
+
 
 // ----- Get user orders or all orders as an admin
 
@@ -78,7 +87,7 @@ async function getOrderId(req, res) {
 
 // ----- Marks orders as shipped if admin
 
-async function isShipped(req, res) {
+async function isDelivered(req, res) {
   const order = await OrderModel.findById({ _id: req.params.id });
   order.shipped = true;
   await order.save();
@@ -87,4 +96,4 @@ async function isShipped(req, res) {
 
 // ----- Exports functions to router
 
-module.exports = { createOrder, getAllOrders, getOrderId, isShipped };
+module.exports = { createOrder, getAllOrders, getOrderId, isDelivered };
