@@ -1,6 +1,12 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-const OrderContext = createContext();
+const OrderContext = createContext({
+    orders: [],
+    lastOrder: null,
+    createOrder: async () => { },
+    fetchOrderById: async () => { },
+    markOrderAsDelivered: async () => { }
+});
 
 export const useOrderContext = () => useContext(OrderContext);
 
@@ -48,9 +54,9 @@ const OrderProvider = ({ children }) => {
         }
     };
 
-    useEffect(() => {
-        fetchAllOrders();
-    }, []);
+    // useEffect(() => {
+    //     fetchAllOrders();
+    // }, []);
 
     return (
         <OrderContext.Provider value={{

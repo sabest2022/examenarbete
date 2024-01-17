@@ -23,7 +23,6 @@ const CartList = () => {
                     <tr>
                         <th>Plan</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -31,15 +30,13 @@ const CartList = () => {
                     {cartItems.map((cartItem) => (
                         <tr key={cartItem.plan._id}>
                             <td className="product_data">
-                                <img src={cartItem.plan.image} alt="Plan image" />
+
                                 <p>{cartItem.plan.title}</p>
                             </td>
                             <td>
                                 <p>{cartItem.plan.price} kr</p>
                             </td>
-                            <td>
-                                <p>{cartItem.quantity}</p>
-                            </td>
+
                             <td className="product_action">
                                 {/* <button onClick={() => addToCart(cartItem.plan._id)}>Add More</button> */}
                                 <button onClick={() => removeFromCart(cartItem.plan)}>Remove</button>

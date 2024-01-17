@@ -13,6 +13,21 @@ async function verify(token) {
   });
   return ticket.getPayload();
 }
+async function googleAuth(req, res) {
+  if (!req.session || !req.session.user) {
+    console.log("User session missed!");
+    return res.status(401).json({ error: "Not authenticated" });
+
+  }
+
+  try {
+    const user = req.session.user;
+    res.status(200).json(user);
+    console.log("User session exist!");
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
+}
 
 async function googleLogin(req, res) {
   const { token } = req.body;
@@ -35,6 +50,7 @@ async function googleLogin(req, res) {
       }
 
       req.session.user = user;
+      console.log("User: ", user);
     } catch (error) {
       console.log("error so login failed!", error);
       res.status(401).json({ message: "Login failed", error: error.message });
@@ -62,21 +78,7 @@ async function googleLogout(req, res) {
   }
 }
 
-async function googleAuth(req, res) {
-  if (!req.session || !req.session.user) {
-    console.log("User session missed!");
-    return res.status(401).json({ error: "Not authenticated" });
 
-  }
-
-  try {
-    const user = req.session.user;
-    res.status(200).json(user);
-    console.log("User session exist!");
-  } catch (error) {
-    res.status(401).json({ error: error.message });
-  }
-}
 
 async function getUser(req, res) {
   try {

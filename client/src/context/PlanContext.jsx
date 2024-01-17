@@ -20,7 +20,7 @@ export const PlanProvider = ({ children }) => {
     try {
       const response = await axios.get('http://localhost:3000/api/plans');
       setPlans(response.data);
-      console.log(response.data); // Check the fetched data
+      // console.log(response.data); // Check the fetched data
     } catch (error) {
       console.error('Error fetching plans:', error);
     }
