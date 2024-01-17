@@ -2,10 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useOrderContext } from "../../context/OrderContext";
 import { CartContext } from "../../context/CartContext";
-import { useUserContext } from "../../context/UserContext";
 import CartList from "../CartList/CartList";
 
-c
+
 const Checkout = () => {
     const { createOrder } = useOrderContext();
     const { cartItems, clearCart } = useContext(CartContext);
