@@ -1,88 +1,99 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { useOrderContext } from "../../context/OrderContext";
 import { CartContext } from "../../context/CartContext";
 import CartList from "../CartList/CartList";
-
+import { useUserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const { createOrder } = useOrderContext();
-    const { cartItems, clearCart } = useContext(CartContext);
+    const { cartItems, clearCart } = useContext(CartContext); // Assuming you have a CartContext
+    const { currentUser } = useUserContext();
     const navigate = useNavigate();
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [customerAddress, setCustomerAddress] = useState({
-        street: "",
-        zipcode: "",
-        city: "",
-        country: ""
-    });
-
-    const isCustomerAddressValid = () => {
-        // Implement validation logic for customer address
-        // Example: return customerAddress.street !== "" && customerAddress.zipcode !== "";
-    };
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
     const handlePlaceOrder = async () => {
-        // Implementation for placing the order
-    };
+        try {
+            if (cartItems.length === 0) {
+                // Optionally handle the case where the cart is empty
+                return;
+            }
 
-    const renderCheckoutStep = () => {
-        switch (currentIndex) {
-            case 0:
-                return <CartList />; // Implement or import CartList component
-            case 1:
-                return <CustomerInfoForm
-                    address={customerAddress}
-                    setAddress={setCustomerAddress}
-                />; // Implement or import CustomerInfoForm component
-            case 2:
-                return
-                <DeliveryOptions
-                // Props as needed for delivery options
-                />; // Implement or import DeliveryOptions component
-            default:
-                return <div>Unknown step</div>;
+            // Assuming `user` is the state where the current user's info is stored
+            const customerId = currentUser._id;
+
+            // Assuming `cartItems` is your cart state
+            const orderItems = cartItems.map((item) => ({
+                plan: item.plan._id,
+                title: item.plan.title,
+                price: item.plan.price,
+            }));
+
+            // Calculate total price
+            const totalPrice = orderItems.reduce((total, item) => total + item.price, 0);
+
+            // Construct the order object
+            const newOrder = {
+                customer: customerId,
+                orderItems: orderItems,
+                totalprice: totalPrice,
+                date: new Date(),
+                address: {
+                    street: "", // Add your customer address properties here
+                    zipcode: "",
+                    city: "",
+                    country: "",
+                },
+                delivered: false,
+            };
+
+            // Assuming createOrder is an asynchronous function that sends the order to the server
+            const order = await createOrder(newOrder);
+
+            if (order) {
+                // Optionally, perform any additional actions after placing the order
+                clearCart(); // Clear the cart after successful order placement
+                setOrderPlaced(true); // Set the orderPlaced state to show the prompt
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
         }
     };
 
-    const renderNavigationButtons = () => {
-        return (
-            <>
-                {currentIndex > 0 && (
-                    <button onClick={() => setCurrentIndex(currentIndex - 1)}>
-                        Previous
-                    </button>
-                )}
-                {currentIndex < 2 && (
-                    <button
-                        onClick={() => setCurrentIndex(currentIndex + 1)}
-                        disabled={!isCustomerAddressValid()}
-                    >
-                        Nexten
-                    </button>,
-                    <button onClick={handlePlaceOrder} disabled={!isCustomerAddressValid()}>
-                        Place Order
-                    </button>
-                )}
-                {currentIndex === 2 && (
-                    <button onClick={handlePlaceOrder} disabled={!isCustomerAddressValid()}>
-                        Place Order
-                    </button>
-                )}
-            </>
-        );
+    const handleGoBack = () => {
+        // Handle navigation to the first page (you can use a routing library like React Router)
+        // For example, if you're using React Router:
+        navigate('/');
     };
 
     return (
-        <div className="checkout__container">
-            {renderCheckoutStep()}
-            {renderNavigationButtons()}
+        <div>
+            {/* Place Order button */}
+            {!orderPlaced && (
+                <button onClick={handlePlaceOrder} disabled={cartItems.length === 0}>
+                    Place Order
+                </button>
+            )}
+
+            {/* Order Placed prompt */}
+            {orderPlaced && (
+                <div>
+                    <p>Your order has been placed!</p>
+                    <button onClick={handleGoBack}>Go Back to First Page</button>
+                </div>
+            )}
+
+            {/* Display your CartList component */}
+            {!orderPlaced && <CartList />}
         </div>
     );
 };
 
 export default Checkout;
+
+
+
+
 
 // // import Loader from "./Loader/Loader";
 

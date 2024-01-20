@@ -15,6 +15,7 @@ const AddressSchema = new Schema({
 
 const OrderItemSchema = new Schema({
   plan: { type: Schema.Types.ObjectId, ref: 'Plan', required: true },
+  title: { type: String },
   price: { type: Number, default: 0 }
 });
 

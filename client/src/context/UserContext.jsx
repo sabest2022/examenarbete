@@ -36,7 +36,8 @@ export const UserProvider = ({ children }) => {
                 { withCredentials: true },
             )
             if (response.data) {
-                checkAuthStatus()
+                setCurrentUser(response.data.user);
+                setIsSignedIn(true);
             }
         } catch (error) {
             console.error('Server error during login:', error)
