@@ -1,15 +1,15 @@
 const { OAuth2Client } = require("google-auth-library");
 const { UserModel } = require("./user.model");
-console.log("userController triggers");
+
 const client = new OAuth2Client(
-  "152826738328-2gschac9945q44ilfue2n9c6d19nt296.apps.googleusercontent.com"
+  // "152826738328-v12sqe8onlto7c14emu3kgvaodgissi0.apps.googleusercontent.com"
+  '152826738328-2gschac9945q44ilfue2n9c6d19nt296.apps.googleusercontent.com'
 );
 
 async function verify(token) {
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience:
-      "152826738328-2gschac9945q44ilfue2n9c6d19nt296.apps.googleusercontent.com",
+    audience: '152826738328-2gschac9945q44ilfue2n9c6d19nt296.apps.googleusercontent.com',
   });
   return ticket.getPayload();
 }
@@ -31,10 +31,9 @@ async function googleAuth(req, res) {
 
 async function googleLogin(req, res) {
   const { token } = req.body;
-  console.log("google login triggers")
   try {
     const googleUser = await verify(token);
-    console.log("token trigger");
+
     let user;
 
     try {
@@ -50,7 +49,7 @@ async function googleLogin(req, res) {
       }
 
       req.session.user = user;
-      console.log("User: ", user);
+      console.log("User: ", user.name, user._id);
     } catch (error) {
       console.log("error so login failed!", error);
       res.status(401).json({ message: "Login failed", error: error.message });
@@ -60,6 +59,7 @@ async function googleLogin(req, res) {
 
     res.status(200).json({ message: "User authenticated", user });
   } catch (error) {
+    console.log("error so login failed!", error);
     res.status(401).json({ message: "Authentication failed" });
   }
 }
@@ -73,6 +73,7 @@ async function googleLogout(req, res) {
 
     req.session = null;
     res.status(204).json(null);
+    console.log("User is loged out!")
   } catch (error) {
     res.status(401).json({ message: "Logout failed" });
   }

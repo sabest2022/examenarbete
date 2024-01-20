@@ -8,7 +8,7 @@ require("express-async-errors");
 
 
 const app = express();
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: [true, 'http://localhost:5173'], credentials: true }));
 // ----- Creates cookie session
 
 const cookieSession = require("cookie-session");

@@ -5,7 +5,7 @@ const {
   googleAuth,
   getUser,
 } = require("./user.controller");
-console.log('userRouter triggers!')
+
 const userRouter = express
   .Router()
   .post("/google-login", googleLogin)

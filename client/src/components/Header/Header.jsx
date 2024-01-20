@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script';
 import './Header.css'; // Import your CSS file
 import logo from '../../assets/logo.png';
 import { useUserContext } from '../../context/UserContext';
@@ -7,7 +8,7 @@ import { GoogleLogout } from 'react-google-login'
 import CartIcon from '../CartIcon/CartIcon';
 // In your component
 
-
+const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
 const Header = () => {
     const { isSignedIn, logout } = useUserContext();
 
@@ -16,8 +17,21 @@ const Header = () => {
         // Handle logout logic here
     };
 
+    useEffect(() => {
+        console.log(clientId)
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: '',
+            })
+        }
+        gapi.load('client:auth2', start)
+    }, [clientId])
+
+
     return (
         <header className="header">
+
             <div className="logo">
                 <img src={logo} alt="Logo" />
             </div>

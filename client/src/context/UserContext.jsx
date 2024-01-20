@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 const UserContext = createContext()
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     const login = async (tokenId) => {
-        console.log("token trigger");
+
         try {
 
             const response = await axios.post(
