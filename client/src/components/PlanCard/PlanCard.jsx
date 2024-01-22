@@ -1,6 +1,5 @@
 
-import { Link } from 'react-router-dom';
-// import { useCartContext } from '../../context/CartContext';
+
 import BuyProductBtn from '../BuyProductBtn/BuyProductBtn';
 import './PlanCard.css'
 
@@ -8,18 +7,6 @@ import './PlanCard.css'
 
 
 function PlanCard({ _id, title, description, price, responsive, pages, plan, image }) {
-
-    // function handleDecreaseInStock(_id, cssClass) {
-    //     const { addToCart } = useCartContext();
-    //     addToCart(_id, 1);
-
-    //     return (
-    //         <div onClick={handleDecreaseInStock}>Order</div>
-    //     )
-    // }
-    // function shortenDescription(d) {
-    //     return d.length <= 15 ? d : `${d.slice(0, 15)}...`;
-    // }
 
     return (
         <div key={_id} className="plan-item">

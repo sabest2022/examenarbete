@@ -7,10 +7,12 @@ const { PlanModel } = require("../plan/plan.model");
 
 async function createOrder(req, res, next) {
   try {
-    const { customer, orderItems, totalprice, address } = req.body;
+    console.log(req.body);
+    const { customer, orderItems, totalprice, address, customerName } = req.body;
 
     const order = new OrderModel({
       customer: customer,
+      customerName: customerName,
       orderItems: orderItems,
       totalprice: totalprice,
       date: new Date(), // Use server's date or from req.body
@@ -44,6 +46,15 @@ async function createOrder(req, res, next) {
 // ----- Get user orders or all orders as an admin
 
 async function getAllOrders(req, res) {
+
+  try {
+    const orders = await OrderModel.find({});
+    res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving user orders", error: error.message });
+  }
+}
+async function getUserAllOrders(req, res) {
   const userId = req.session.user._id; // Get user ID from session
 
   try {
@@ -115,4 +126,4 @@ async function isDelivered(req, res) {
 
 // ----- Exports functions to router
 
-module.exports = { createOrder, getAllOrders, getOrderId, isDelivered };
+module.exports = { createOrder, getAllOrders, getOrderId, isDelivered, getUserAllOrders };

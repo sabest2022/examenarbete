@@ -28,6 +28,7 @@ const orderSchema = new Schema({
     default: Math.floor(Math.random() * 1000000),
   },
   customer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  customerName: { type: String, required: true },
   orderItems: { type: [OrderItemSchema], required: true },
   totalprice: { type: Number, required: true },
   date: { type: Date, default: Date.now },

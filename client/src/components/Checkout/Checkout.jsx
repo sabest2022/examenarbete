@@ -21,6 +21,8 @@ const Checkout = () => {
 
             // Assuming `user` is the state where the current user's info is stored
             const customerId = currentUser._id;
+            const customerNam = currentUser.name
+            console.log(customerNam);
 
             // Assuming `cartItems` is your cart state
             const orderItems = cartItems.map((item) => ({
@@ -35,6 +37,7 @@ const Checkout = () => {
             // Construct the order object
             const newOrder = {
                 customer: customerId,
+                customerName: customerNam,
                 orderItems: orderItems,
                 totalprice: totalPrice,
                 date: new Date(),
@@ -49,7 +52,7 @@ const Checkout = () => {
 
             // Assuming createOrder is an asynchronous function that sends the order to the server
             const order = await createOrder(newOrder);
-
+            console.log(customerNam);
             if (order) {
                 // Optionally, perform any additional actions after placing the order
                 clearCart(); // Clear the cart after successful order placement

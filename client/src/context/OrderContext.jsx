@@ -1,9 +1,10 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 import axios from 'axios';
 const OrderContext = createContext({
     orders: [],
     lastOrder: null,
     createOrder: async () => { },
+    fetchAllOrders: async () => { },
     fetchOrderById: async () => { },
     markOrderAsDelivered: async () => { }
 });
@@ -14,7 +15,7 @@ const OrderProvider = ({ children }) => {
     const [orders, setOrders] = useState([]);
     const [lastOrder, setLastOrder] = useState(null);
 
-    const fetchAllOrders = async () => {
+    const fetchAllOrders = useCallback(async () => {
         console.log('trigger fetchAllOrder in OrderContext');
         try {
             const response = await axios.get('http://localhost:3000/api/orders', { withCredentials: true });
@@ -22,7 +23,8 @@ const OrderProvider = ({ children }) => {
         } catch (error) {
             console.error('Error fetching orders:', error);
         }
-    };
+    }, []);
+
 
     const fetchOrderById = async (id) => {
         console.log('trigger fetchOrder in OrderContext');
@@ -64,6 +66,7 @@ const OrderProvider = ({ children }) => {
             lastOrder,
             createOrder,
             fetchOrderById,
+            fetchAllOrders,
             markOrderAsDelivered
         }}>
             {children}

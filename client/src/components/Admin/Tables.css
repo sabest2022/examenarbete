@@ -1,0 +1,48 @@
+/* tables.css */
+
+.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #ddd;
+    /* Adjust color as needed */
+    padding: 8px;
+    text-align: left;
+}
+
+.table-bordered th {
+    background-color: #f2f2f2;
+    /* Adjust background color as needed */
+    color: #333;
+    /* Adjust text color as needed */
+}
+
+.table-bordered tbody tr:nth-child(even) {
+    background-color: #f9f9f945;
+    /* Zebra striping for rows */
+}
+
+.table-bordered tbody tr:hover {
+    background-color: #bdf2bb9e;
+    /* Hover effect for rows */
+}
+
+.table-bordered th:first-child,
+.table-bordered td:first-child {
+    padding-left: 16px;
+}
+
+.table-bordered th:last-child,
+.table-bordered td:last-child {
+    padding-right: 16px;
+}
+
+/* Style for buttons inside the table */
+.table-bordered button {
+    margin-right: 8px;
+    /* Spacing between buttons */
+    /* Add more button styles as needed */
+}

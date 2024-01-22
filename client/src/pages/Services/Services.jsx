@@ -56,7 +56,7 @@ import { usePlanContext } from '../../context/PlanContext';
 
 import "./services.css";
 
-const PlanList = () => {
+const Services = () => {
 
     const { plans } = usePlanContext();
     if (!plans || plans.length === 0) {
@@ -85,5 +85,5 @@ const PlanList = () => {
     );
 };
 //<ProductCard key={product._id} {...product} />
-export default PlanList;
+export default Services;
 

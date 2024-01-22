@@ -3,6 +3,7 @@ const {
   googleLogin,
   googleLogout,
   googleAuth,
+  getAllUser,
   getUser,
 } = require("./user.controller");
 
@@ -11,6 +12,7 @@ const userRouter = express
   .post("/google-login", googleLogin)
   .post("/google-logout", googleLogout)
   .get("/google-authorize", googleAuth)
-  .get("/user/:id", getUser);
+  .get("/username/:id", getUser)
+  .get("/", getAllUser);
 
 module.exports = { userRouter };

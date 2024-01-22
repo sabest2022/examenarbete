@@ -64,7 +64,7 @@ export const UserProvider = ({ children }) => {
     const getUser = async (userId) => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/users/user/${userId}`,
+                `http://localhost:3000/api/users/username/${userId}`,
             )
 
             setCurrentUser(response.data)
@@ -82,7 +82,7 @@ export const UserProvider = ({ children }) => {
                 setIsSignedIn,
                 login,
                 logout,
-                checkAuthStatus,
+                checkAuthStatus
             }}
         >
             {children}

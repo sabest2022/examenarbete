@@ -10,7 +10,7 @@ import CartIcon from '../CartIcon/CartIcon';
 
 const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
 const Header = () => {
-    const { isSignedIn, logout } = useUserContext();
+    const { isSignedIn, logout, currentUser } = useUserContext();
 
     const onLogoutSuccess = async () => {
         await logout();
@@ -28,7 +28,10 @@ const Header = () => {
         gapi.load('client:auth2', start)
     }, [clientId])
 
-
+    const getFirstName = (fullName) => {
+        const names = fullName.split(' ');
+        return names[0]; // Return the first element of the array (the first name)
+    };
     return (
         <header className="header">
 
@@ -48,16 +51,29 @@ const Header = () => {
                 {!isSignedIn ? (
                     <LoginButton />
                 ) : (
-                    <GoogleLogout
-                        clientId="your-client-id"
-                        buttonText="Logout"
-                        onLogoutSuccess={onLogoutSuccess}
-                    // style={{ backgroundColor: '#000', color: '#fff', border: 'none' }}
-                    // You may need to style this button directly or through a custom class
-                    />
+                    <div className='logout'>
+                        {currentUser && (
+                            <div className="user-info">
+                                <img
+                                    src={currentUser.imageUrl}
+                                    alt="User Profile"
+                                    className="user-profile-image"
+                                />
+                                <p className='welcome'>Welcome, {getFirstName(currentUser.name)}!</p>
+                            </div>
+                        )}
+                        <GoogleLogout
+                            clientId="your-client-id"
+                            buttonText="Logout"
+                            onLogoutSuccess={onLogoutSuccess}
+                        // style={{ backgroundColor: '#000', color: '#fff', border: 'none' }}
+                        // You may need to style this button directly or through a custom class
+                        />
+
+                    </div>
                 )}
             </div>
-            <div>
+            <div className="cart-icon">
                 <CartIcon />
             </div>
 
