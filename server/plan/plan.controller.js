@@ -69,7 +69,7 @@ async function deleteplan(req, res, next) {
         if ((await PlanModel.findOne({ _id: req.params.id })) === null) {
             return res.status(404).json(req.params.id + " not found");
         };
-        await planModel.deleteOne({ _id: req.params.id });
+        await PlanModel.deleteOne({ _id: req.params.id });
         res.status(204).json(req.params.id + " deleted");
     } catch {
         res.status(404).json(req.params.id + " not found");

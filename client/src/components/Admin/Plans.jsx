@@ -1,40 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './tables.css';
-
+import CreatePlanForm from './AdminComponent/Plans/CreatePlanForm';
 import { usePlanContext } from '../../context/PlanContext';
 
 const Plans = () => {
-    const { plans } = usePlanContext();
+    const { plans, createPlan, updatePlan, removePlan } = usePlanContext();
+    const [showCreateForm, setShowCreateForm] = useState(false);
+    const [editingPlan, setEditingPlan] = useState(null); // State to track the editing plan
 
     if (!plans || plans.length === 0) {
-        return <div>Loading plans...</div>; // or some other placeholder
+        return <div>Loading plans...</div>;
     }
 
-    const handleEdit = (planId) => {
-        // Implement your edit logic here
-        console.log(`Editing plan with ID: ${planId}`);
-    };
-
-    const handleDelete = (planId) => {
-        // Implement your delete logic here
+    const handleDelete = async (planId) => {
+        await removePlan(planId);
         console.log(`Deleting plan with ID: ${planId}`);
     };
 
-    const handleAdd = () => {
-        // Implement your add logic here
-        console.log('Adding new plan');
+    const toggleCreateForm = () => {
+        setShowCreateForm(!showCreateForm);
+        setEditingPlan(null); // Reset editing plan when toggling the form
+    };
+
+    const handleEdit = (planId) => {
+        const planToEdit = plans.find(plan => plan._id === planId);
+        setEditingPlan(planToEdit);
+        setShowCreateForm(true);
+        console.log(`Editing plan with ID: ${planId}`);
     };
 
     const shortenDescription = (description) => {
-        // Display only the first 50 characters of the description
         return description.length > 50 ? `${description.substring(0, 50)}...` : description;
     };
 
-
     return (
         <div className="admin-panel">
-            <h2>All Products</h2>
-            <button onClick={handleAdd}>Add Product</button>
+            <div className="form-container">
+                {showCreateForm && (
+                    <CreatePlanForm
+                        createPlan={createPlan}
+                        updatePlan={updatePlan}
+                        editingPlan={editingPlan}
+                        onClose={() => {
+                            setEditingPlan(null);
+                            setShowCreateForm(false);
+                        }}
+                    />
+                )}
+            </div>
+            <button onClick={toggleCreateForm}>Add Product</button>
             <table className="table-bordered">
                 <thead>
                     <tr>
@@ -64,7 +78,6 @@ const Plans = () => {
             </table>
         </div>
     );
-
 };
 
 export default Plans;

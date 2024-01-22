@@ -46,3 +46,21 @@
     /* Spacing between buttons */
     /* Add more button styles as needed */
 }
+
+.form-and-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    margin-bottom: 20px;
+    /* Adjust as needed */
+}
+
+/* Style for your form and table */

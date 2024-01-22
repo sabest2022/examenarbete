@@ -20,7 +20,7 @@ const planRouter = express
     .post("/", validate(planJoiSchema), createplan)
     .get("/:id", getplanID)
     .put("/:id", validate(planJoiSchema), editplan)
-    .delete("/:id", isLoggedIn, isAdmin, deleteplan)
+    .delete("/:id", deleteplan)
 
 // ----- Exports router
 
