@@ -15,7 +15,7 @@ const orderRouter = express
 
   .get('/', getAllOrders)
   .get('/:id', getOrderId)
-  .post('/', createOrder)
+  .post('/', isLoggedIn, createOrder)
   // isLoggedIn,
   .put('/:id', isDelivered)
 // , isAdmin

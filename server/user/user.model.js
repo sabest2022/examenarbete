@@ -10,7 +10,8 @@ const Joi = require("joi");
 const AddressSchema = new Schema({
   street: { type: String, required: false, default: '' },
   city: { type: String, required: false, default: '' },
-  zipcode: { type: String, required: false, default: '' }
+  zipcode: { type: String, required: false, default: '' },
+  country: { type: String, required: false, default: '' }
 });
 
 const UserSchema = new Schema({

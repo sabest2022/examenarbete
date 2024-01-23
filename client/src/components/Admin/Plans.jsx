@@ -31,7 +31,7 @@ const Plans = () => {
 
     return (
         <div className="admin-panel">
-            <h2>Admin Dashboard</h2>
+            <h2>Manage Product</h2>
             <button onClick={toggleCreateForm}>Add Product</button>
             {showCreateForm && !editingPlan._id && (
                 <CreatePlanForm

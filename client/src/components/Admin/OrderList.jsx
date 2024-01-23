@@ -15,7 +15,7 @@ const OrderList = () => {
 
     return (
         <div>
-            <h2>Orders</h2>
+            <h2>Manage Orders</h2>
             <table className="table-bordered">
                 <thead>
                     <tr>

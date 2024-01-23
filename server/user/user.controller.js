@@ -97,6 +97,30 @@ async function getUser(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+
+
+async function editUser(req, res) {
+  console.log('EDIT UserName triggers!');
+  const userId = req.params.id;
+  const updatedData = req.body; // The updated user data from the request body
+
+  try {
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update the user with the new data
+    // This can vary based on how you want to handle updates
+    Object.assign(user, updatedData);
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 async function getAllUser(req, res) {
   console.log('getAllUser triggers!');
 
@@ -112,4 +136,4 @@ async function getAllUser(req, res) {
   }
 }
 
-module.exports = { googleLogin, googleLogout, googleAuth, getUser, getAllUser };
+module.exports = { googleLogin, googleLogout, googleAuth, getUser, getAllUser, editUser };
