@@ -1,0 +1,47 @@
+/* CreatePlanForm.css */
+
+.create-plan-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 0 auto;
+    /* This will center your form if it's less than 100% width */
+}
+
+
+.create-plan-form label,
+.create-plan-form input,
+.create-plan-form textarea,
+.create-plan-form button {
+    margin-bottom: 10px;
+    /* Spacing between elements */
+}
+
+.create-plan-form input[type="text"],
+.create-plan-form input[type="number"],
+.create-plan-form textarea {
+    width: 100%;
+    /* Elements fill the width of the form */
+}
+
+.create-plan-form textarea {
+    height: 100px;
+    /* Fixed height for textarea */
+}
+
+.create-plan-form label {
+    display: flex;
+    align-items: center;
+    display: block;
+    /* Aligns the label text and checkbox */
+}
+
+.create-plan-form label input[type="checkbox"] {
+    margin-left: 10px;
+    /* Spacing between label text and checkbox */
+}
+
+.create-plan-form button {
+    align-self: flex-start;
+    /* Align the button to the start of the flex container */
+}

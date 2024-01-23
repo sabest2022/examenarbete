@@ -14,65 +14,59 @@ const Plans = () => {
 
     const handleDelete = async (planId) => {
         await removePlan(planId);
-        console.log(`Deleting plan with ID: ${planId}`);
-    };
 
+    };
+    const handleEdit = (plan) => {
+        setEditingPlan(plan); // Set the entire plan object for editing
+        // You don't need to toggle `showCreateForm` because the form will now be inline
+    };
     const toggleCreateForm = () => {
-        setShowCreateForm(!showCreateForm);
-        setEditingPlan(null); // Reset editing plan when toggling the form
-    };
-
-    const handleEdit = (planId) => {
-        const planToEdit = plans.find(plan => plan._id === planId);
-        setEditingPlan(planToEdit);
-        setShowCreateForm(true);
-        console.log(`Editing plan with ID: ${planId}`);
-    };
-
-    const shortenDescription = (description) => {
-        return description.length > 50 ? `${description.substring(0, 50)}...` : description;
+        if (showCreateForm) {
+            setEditingPlan(null); // Reset editing plan when closing the form
+        } else {
+            setEditingPlan({}); // Set to an empty object to indicate creating a new plan
+        }
+        setShowCreateForm(!showCreateForm); // Toggle the visibility of the form
     };
 
     return (
         <div className="admin-panel">
-            <div className="form-container">
-                {showCreateForm && (
-                    <CreatePlanForm
-                        createPlan={createPlan}
-                        updatePlan={updatePlan}
-                        editingPlan={editingPlan}
-                        onClose={() => {
-                            setEditingPlan(null);
-                            setShowCreateForm(false);
-                        }}
-                    />
-                )}
-            </div>
+            <h2>Admin Dashboard</h2>
             <button onClick={toggleCreateForm}>Add Product</button>
+            {showCreateForm && !editingPlan._id && (
+                <CreatePlanForm
+                    createPlan={createPlan}
+                    onClose={() => setShowCreateForm(false)}
+                />
+            )}
             <table className="table-bordered">
                 <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Responsive</th>
-                        <th>Pages</th>
-                        <th>Price</th>
-                        <th>Actions</th>
-                    </tr>
+                    {/* Table headers */}
                 </thead>
                 <tbody>
                     {plans.map((plan) => (
-                        <tr key={plan._id}>
-                            <td>{plan.title}</td>
-                            <td>{shortenDescription(plan.description)}</td>
-                            <td>{plan.responsive ? 'Yes' : 'No'}</td>
-                            <td>{plan.pages}</td>
-                            <td>{plan.price} kr</td>
-                            <td>
-                                <button onClick={() => handleEdit(plan._id)}>Edit</button>
-                                <button onClick={() => handleDelete(plan._id)}>Delete</button>
-                            </td>
-                        </tr>
+                        <React.Fragment key={plan._id}>
+                            {editingPlan && editingPlan._id === plan._id ? (
+                                <tr>
+                                    <td colSpan="6">
+                                        <CreatePlanForm
+                                            updatePlan={updatePlan}
+                                            editingPlan={editingPlan}
+                                            onClose={() => setEditingPlan(null)}
+                                        />
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td>{plan.title}</td>
+                                    {/* Other plan data cells */}
+                                    <td>
+                                        <button onClick={() => handleEdit(plan)}>Edit</button>
+                                        <button onClick={() => handleDelete(plan._id)}>Delete</button>
+                                    </td>
+                                </tr>
+                            )}
+                        </React.Fragment>
                     ))}
                 </tbody>
             </table>
@@ -81,3 +75,15 @@ const Plans = () => {
 };
 
 export default Plans;
+
+
+// const handleEdit = (planId) => {
+//     const planToEdit = plans.find(plan => plan._id === planId);
+//     setEditingPlan(planToEdit);
+//     setShowCreateForm(true);
+//     console.log(`Editing plan with ID: ${planId}`);
+// };
+
+// const shortenDescription = (description) => {
+//     return description.length > 50 ? `${description.substring(0, 50)}...` : description;
+// };

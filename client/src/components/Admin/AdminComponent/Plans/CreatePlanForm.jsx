@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './CreatePlanForm.css';
 const CreatePlanForm = ({ createPlan, updatePlan, editingPlan, onClose }) => {
     const [formState, setFormState] = useState({
         title: '',
@@ -46,15 +46,22 @@ const CreatePlanForm = ({ createPlan, updatePlan, editingPlan, onClose }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="title" value={formState.title} onChange={handleInputChange} placeholder="Title" />
-            <textarea name="description" value={formState.description} onChange={handleInputChange} placeholder="Description" />
+        <form onSubmit={handleSubmit} className='create-plan-form'>
             <label>
-                Responsive:
-                <input type="checkbox" name="responsive" checked={formState.responsive} onChange={handleInputChange} />
+                Title <input type="text" name="title" value={formState.title} onChange={handleInputChange} placeholder="Title" />
+            </label> <label> description
+                <textarea name="description" value={formState.description} onChange={handleInputChange} placeholder="Description" />
             </label>
-            <input type="number" name="pages" value={formState.pages} onChange={handleInputChange} placeholder="Number of Pages" />
-            <input type="number" name="price" value={formState.price} onChange={handleInputChange} placeholder="Price" />
+            <label>
+                Responsive
+                <input type="checkbox" name="responsive" checked={formState.responsive} onChange={handleInputChange} />
+            </label> <lable> pages
+                <input type="number" name="pages" value={formState.pages} onChange={handleInputChange} placeholder="Number of Pages" />
+            </lable>
+            <label> Price
+                <input type="number" name="price" value={formState.price} onChange={handleInputChange} placeholder="Price" />
+            </label>
+
             <button type="submit">{editingPlan ? 'Update Plan' : 'Create Plan'}</button>
         </form>
     );
