@@ -1,0 +1,17 @@
+.admin-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5vh;
+    background-color: rgba(16, 16, 55, 0.811);
+}
+
+.dashboard-sections {
+    background-color: rgba(18, 18, 20, 0.811);
+    padding: 5vh;
+}
+
+h1 {
+    color: blueviolet;
+}
