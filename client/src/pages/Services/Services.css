@@ -25,23 +25,6 @@ body {
 }
 
 
-
-.plan-container p {
-    color: #666666;
-
-    border: 1px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Lighter text color for the description */
-    font-size: 1rem;
-    /* Size of the description text */
-    line-height: 1.4;
-    /* Spacing between lines */
-}
-
 .plans-list {
     display: flex;
     flex-wrap: wrap;
