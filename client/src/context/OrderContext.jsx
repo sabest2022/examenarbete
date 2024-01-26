@@ -41,7 +41,7 @@ const OrderProvider = ({ children }) => {
             const response = await axios.post('http://localhost:3000/api/orders', newOrder, { withCredentials: true });
             setLastOrder(response.data);
             fetchAllOrders(); // Refresh the list of orders
-            return response.data;
+            return response.data.url;
         } catch (error) {
             console.error('Error creating order:', error);
         }

@@ -2,17 +2,70 @@
 
 const { OrderModel } = require('./order.model');
 const { PlanModel } = require("../plan/plan.model");
+const { configDotenv } = require('dotenv');
+const CLIENT_URL = "http://localhost:5173"
+const key = "sk_test_51OcPi9CUIwAO4HE3pAZh22Sif5QQTnvkyr2zXpRws3553cTKKxNHFSCvhx2nHCLNgZZFUmK54SZh7S2VnFqivHk700Wv7tYVeJ";
 
 // ----- Creates a new order
+const stripe = require("stripe")(key);
 
-async function createOrder(req, res, next) {
+// ... Other dependencies and middleware ...
+
+// const createCheckoutSession 
+const createOrder = async (req, res) => {
+  // console.log('Const Stripe:', stripe);
+  const { customer, orderItems, totalprice, stripeCustomerId, customerName, customerEmail } = req.body;
+
+  try {
+    //this line has to be change and implemen on a way that we can retrive the Stripe customerid from our database, for that should we register all user on stripe and simultenously on our databse.
+
+
+    const session = await stripe.checkout.sessions.create({
+      customer: stripeCustomerId,
+      line_items: orderItems.map(item => {
+        return {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: item.title,
+            },
+            unit_amount: item.price * 100, // assuming item.price is in dollars
+          },
+          quantity: 1,
+        };
+      }),
+
+      mode: "payment",
+      allow_promotion_codes: true,
+      success_url: `${CLIENT_URL}/confirmation`,
+      cancel_url: CLIENT_URL,
+
+    });
+
+    res.status(200).json({
+      url: session.url,
+      sessionId: session.id,
+      paymentStatus: session.payment_status
+    });
+  } catch (error) {
+
+    console.log(error.message);
+    res.status(400).send("Internam server ERROR");
+  }
+};
+
+
+
+async function createOrders(req, res, next) {
   try {
     console.log(req.body);
-    const { customer, orderItems, totalprice, address, customerName } = req.body;
-
+    const { customer, orderItems, totalprice, address, customerName, customerEmail, stripeCustomerId } = req.body;
+    console.log('stripeCustomerId', stripeCustomerId);
     const order = new OrderModel({
       customer: customer,
       customerName: customerName,
+      customerEmail: customerEmail,
+      stripeCustomerId: stripeCustomerId,
       orderItems: orderItems,
       totalprice: totalprice,
       date: new Date(), // Use server's date or from req.body
@@ -86,36 +139,7 @@ async function getOrderId(req, res) {
   }
 }
 
-// async function getOrderId(req, res) {
-//   try {
-//     const userId = req.session.user._id;
-//     const isAdmin = req.session.user.isAdmin;
-//     const orderId = req.params.id;
 
-//     let order;
-
-//     if (isAdmin) {
-//       order = await OrderModel.findById(orderId)
-//         .populate('customer', 'name email') // Adjust fields as needed
-//         .populate('orderItems.plan', 'title price'); // Adjust fields as needed
-//     } else {
-//       order = await OrderModel.findOne({ _id: orderId, customer: userId })
-//         .populate('customer', 'name email') // Adjust fields as needed
-//         .populate('orderItems.plan', 'title price'); // Adjust fields as needed
-//     }
-
-//     if (!order) {
-//       return res.status(404).json({ message: "Order not found" });
-//     }
-
-//     res.status(200).json(order);
-//   } catch (error) {
-//     res.status(500).json({ message: "Error retrieving order", error: error.message });
-//   }
-// }
-
-
-// ----- Marks orders as shipped if admin
 
 async function isDelivered(req, res) {
   const order = await OrderModel.findById({ _id: req.params.id });

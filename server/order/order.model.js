@@ -14,9 +14,9 @@ const AddressSchema = new Schema({
 // ----- Schema to create order items
 
 const OrderItemSchema = new Schema({
-  plan: { type: Schema.Types.ObjectId, ref: 'Plan', required: true },
+  plan: { type: Schema.Types.ObjectId, ref: 'Plan' },
   title: { type: String },
-  price: { type: Number, default: 0 }
+  price: { type: Number }
 });
 
 // ----- Schema to create order
@@ -27,12 +27,15 @@ const orderSchema = new Schema({
     required: true,
     default: Math.floor(Math.random() * 1000000),
   },
-  customer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  customerName: { type: String, required: true },
+  customer: { type: Schema.Types.ObjectId, ref: 'User', required: false },
+  customerName: { type: String, required: false },
+  customerEmail: { type: String, required: true },
+  stripeCustomerId: { type: String, required: true },
   orderItems: { type: [OrderItemSchema], required: true },
   totalprice: { type: Number, required: true },
   date: { type: Date, default: Date.now },
   address: { type: AddressSchema },
+  paymentStatus: { type: String },
   delivered: { type: Boolean, default: false },
 }, { versionKey: false });
 

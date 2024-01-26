@@ -37,6 +37,7 @@ import Services from './pages/Services/Services';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 import Checkout from './components/Checkout/Checkout';
+import Confirmation from './pages/Confirmation/Confirmation';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/services" element={<Services />} />

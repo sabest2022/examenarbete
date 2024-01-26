@@ -1,6 +1,9 @@
 const { OAuth2Client } = require("google-auth-library");
 const { UserModel } = require("./user.model");
+const key = "sk_test_51OcPi9CUIwAO4HE3pAZh22Sif5QQTnvkyr2zXpRws3553cTKKxNHFSCvhx2nHCLNgZZFUmK54SZh7S2VnFqivHk700Wv7tYVeJ";
 
+// ----- Creates a new order
+const stripe = require("stripe")(key);
 const client = new OAuth2Client(
   // "152826738328-v12sqe8onlto7c14emu3kgvaodgissi0.apps.googleusercontent.com"
   '152826738328-2gschac9945q44ilfue2n9c6d19nt296.apps.googleusercontent.com'
@@ -45,7 +48,16 @@ async function googleLogin(req, res) {
           email: googleUser.email,
           imageUrl: googleUser.picture
         });
-        console.log("have not find the user, so created it!");
+        const stripeCustomer = await stripe.customers.create({
+          email: googleUser.email,
+          name: googleUser.name,
+          // other customer details
+        });
+        user.stripeCustomerId = stripeCustomer.id;
+        console.log(stripeCustomer.id);
+        await user.save();
+        console.log("User created with Stripe customer ID:", user.stripeCustomerId);
+
       }
 
       req.session.user = user;
@@ -86,13 +98,14 @@ async function getUser(req, res) {
   const userId = req.params.id;
   try {
 
-    const user = await UserModel.findById(userId).select('name');
+    const user = await UserModel.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
     res.status(200).json(user);
+    console.log(user);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -123,13 +136,8 @@ async function editUser(req, res) {
 
 async function getAllUser(req, res) {
   console.log('getAllUser triggers!');
-
   try {
-
     const users = await UserModel.find({}, '-password');
-
-
-
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });

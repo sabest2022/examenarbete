@@ -17,6 +17,7 @@ const AddressSchema = new Schema({
 const UserSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
+  stripeCustomerId: { type: String, default: null },
   imageUrl: { type: String, required: false, default: 'defaultValue' },
   password: { type: String, required: false, default: 'dfhdthdthgdhfgnghfgfhnfghnbfgffrrtjkuk' },
   telephone: { type: Number, required: false, default: 0 },
@@ -28,6 +29,7 @@ const UserSchema = new Schema({
 const userJoiSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(), // Use email validator for email field
+  stripeCustomerId: Joi.string(),
   imageUrl: Joi.string(),
   password: Joi.string().min(5).max(18),
   telephone: Joi.number(),
