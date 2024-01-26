@@ -1,71 +1,83 @@
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.home {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* background-image: url('../../assets/background.png'); */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.home-content {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    /* Spacing between sections */
-}
-
-.home-section {
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Semi-transparent white for the frame */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
     border-radius: 8px;
-    /* Rounded corners for the frame */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow for depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.home-section h2 {
-    color: #0056b3;
-    /* A blue color for the titles */
-    margin-bottom: 15px;
+.contact-form div {
+    margin-bottom: 1rem;
 }
 
-.home-section p {
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
     color: #333;
-    /* Dark gray for the main font color */
-    line-height: 1.6;
-    text-align: left;
 }
 
-.call-to-action {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa;
-    color: #0056b3;
-    /* Using the same blue as titles for consistency */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Prevents padding from affecting width */
+    margin-bottom: 1rem;
 }
 
-/* Adjustments for small screens */
+.contact-form textarea {
+    resize: vertical;
+    /* Allows vertical resizing, typically a good UX decision */
+    min-height: 150px;
+}
+
+.contact-form button[type="submit"] {
+    padding: 1rem 1.5rem;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    transition: background-color 0.3s;
+}
+
+.contact-form button[type="submit"]:hover,
+.contact-form button[type="submit"]:focus {
+    background-color: #013f7b;
+}
+
+/* If you want to add icons to your input fields */
+.contact-form .input-icon {
+    position: relative;
+}
+
+.contact-form .input-icon input {
+    padding-left: 2.5rem;
+}
+
+.contact-form .input-icon i {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .home-content {
-        padding: 10px;
+    .contact-form {
+        padding: 1rem;
+        margin: 1rem;
     }
 
-    .home-section h2 {
-        font-size: 1.5em;
-        /* Adjust the size on small screens */
+    .contact-form button[type="submit"] {
+        width: 100%;
     }
 }
