@@ -4,10 +4,10 @@ const { OrderModel } = require('./order.model');
 const { PlanModel } = require("../plan/plan.model");
 const { configDotenv } = require('dotenv');
 const CLIENT_URL = "http://localhost:5173"
-const key = "sk_test_51OcPi9CUIwAO4HE3pAZh22Sif5QQTnvkyr2zXpRws3553cTKKxNHFSCvhx2nHCLNgZZFUmK54SZh7S2VnFqivHk700Wv7tYVeJ";
+
 
 // ----- Creates a new order
-const stripe = require("stripe")(key);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 // ... Other dependencies and middleware ...
 
