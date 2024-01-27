@@ -95,3 +95,38 @@
     /* gap: 5px; */
     /* Adjust as needed */
 }
+
+.user-profile-link {
+    position: relative;
+    display: inline-block;
+}
+
+.user-profile-image {
+    width: 40px;
+    /* Adjust size as needed */
+    height: 40px;
+    /* Adjust size as needed */
+    border-radius: 50%;
+    /* Circular image */
+}
+
+.profile-hover-text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: small;
+}
+
+.user-profile-link:hover .profile-hover-text {
+    visibility: visible;
+    opacity: 1;
+}

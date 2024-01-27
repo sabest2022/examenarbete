@@ -6,6 +6,7 @@ import { useUserContext } from '../../context/UserContext';
 import LoginButton from '../Login/Login'
 import { GoogleLogout } from 'react-google-login'
 import CartIcon from '../CartIcon/CartIcon';
+import { Link } from 'react-router-dom';
 // In your component
 
 const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
@@ -56,10 +57,16 @@ const Header = () => {
                     <div className='logout'>
                         {currentUser && (
                             <div className="user-info">
-                                <img
-                                    src={currentUser.imageUrl}
-                                    alt="User Profile" className="user-profile-image" />
-                                <p className='welcome'>Welcome, {getFirstName(currentUser.name)}!</p>
+                                <Link to="/profile" className="user-profile-link">
+                                    <img
+                                        src={currentUser.imageUrl}
+                                        alt="User Profile"
+                                        className="user-profile-image"
+                                    />
+                                    <span className="profile-hover-text">User Profile</span>
+
+                                    <p className='welcome'>Welcome, {getFirstName(currentUser.name)}!</p>
+                                </Link>
                             </div>
                         )}
                         <GoogleLogout
