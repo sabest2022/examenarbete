@@ -99,7 +99,7 @@
     padding: 0.3rem .5rem;
     border-radius: 0.25rem;
     cursor: pointer;
-    text-decoration: none;/ Removes underline from links */
+    text-decoration: none;
 }
 
 .cart-item-footer-btns button:disabled {
@@ -138,8 +138,4 @@
 .cart-item-footer {
     font-size: 16px;
     /* Adjust this value as needed for the total price */
-}
-
-.cart-item-footer-btns button {
-    font-size: 14px;/ Adjust this value as needed for the button text */
 }

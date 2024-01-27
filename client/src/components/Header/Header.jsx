@@ -46,7 +46,9 @@ const Header = () => {
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
-
+            <div className="cart-icon">
+                <CartIcon />
+            </div>
             <div id="signinbutton">
                 {!isSignedIn ? (
                     <LoginButton />
@@ -56,9 +58,7 @@ const Header = () => {
                             <div className="user-info">
                                 <img
                                     src={currentUser.imageUrl}
-                                    alt="User Profile"
-                                    className="user-profile-image"
-                                />
+                                    alt="User Profile" className="user-profile-image" />
                                 <p className='welcome'>Welcome, {getFirstName(currentUser.name)}!</p>
                             </div>
                         )}
@@ -73,9 +73,7 @@ const Header = () => {
                     </div>
                 )}
             </div>
-            <div className="cart-icon">
-                <CartIcon />
-            </div>
+
 
         </header>
     );

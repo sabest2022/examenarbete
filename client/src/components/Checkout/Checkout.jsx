@@ -1,17 +1,21 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { useOrderContext } from "../../context/OrderContext";
 import { CartContext } from "../../context/CartContext";
 import CartList from "../CartList/CartList";
 import { useUserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import './Checkout.css'
 
 const Checkout = () => {
     const { createOrder } = useOrderContext();
-    const { cartItems, clearCart } = useContext(CartContext); // Assuming you have a CartContext
+    const { cartItems } = useContext(CartContext); // Assuming you have a CartContext
     const { currentUser } = useUserContext();
     const navigate = useNavigate();
-    const [orderPlaced, setOrderPlaced] = useState(false);
-
+    const handleBackClick = () => {
+        navigate('/'); // Change to your desired route
+        // Or, if not using React Router:
+        // window.location.href = "your-first-page-url";
+    };
     const handlePlaceOrder = async () => {
         try {
             if (cartItems.length === 0) {
@@ -58,26 +62,18 @@ const Checkout = () => {
         }
     };
 
-    const handleGoBack = () => {
-        navigate('/'); // Adjust the navigation route as needed
-    };
-
     return (
-        <div>
-            {!orderPlaced && (
-                <button onClick={handlePlaceOrder} disabled={cartItems.length === 0}>
+        <div className="checkout-container">
+            <CartList />
+            {cartItems.length > 0 ? (
+                <button className="place-order-btn" onClick={handlePlaceOrder}>
                     Place Order
                 </button>
+            ) : (
+                <button className="back-btn" onClick={handleBackClick}>
+                    Back to Home
+                </button>
             )}
-
-            {orderPlaced && (
-                <div>
-                    <p>Your order has been placed!</p>
-                    <button onClick={handleGoBack}>Go Back to First Page</button>
-                </div>
-            )}
-
-            {!orderPlaced && <CartList />}
         </div>
     );
 };

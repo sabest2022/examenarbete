@@ -1,0 +1,24 @@
+/* Checkout.css */
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.place-order-btn,
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #929090;
+    border: none;
+    cursor: pointer;
+}
+
+.place-order-btn:hover,
+.back-btn:hover {
+    background-color: #626161;
+    cursor: pointer;
+}
+
+/* Additional styling as needed */

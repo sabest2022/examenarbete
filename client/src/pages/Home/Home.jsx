@@ -27,10 +27,10 @@ const Home = () => {
 
         <div className="home">
             <Header />
-            <main className="home-content">
+            <main className="flex-1">
 
                 {/* Add a title click handler to each section */}
-                <div className="title-container" onClick={() => handleTitleClick('Welcome to Sabest')}>
+                <div className={`w-full transition duration-300 ease-in-out bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-50 cursor-pointer ${activeSection === 'Welcome to Sabest' ? 'bg-gray-300' : 'bg-opacity-10'}`} onClick={() => handleTitleClick('Welcome to Sabest')}>
                     <HomeSection
                         title="Welcome to Sabest"
                         isActive={activeSection === 'Welcome to Sabest'}
@@ -40,13 +40,13 @@ const Home = () => {
 
                     </HomeSection>
                 </div>
-                <div className="title-container" onClick={() => handleTitleClick('Why Choose Us?')}>
+                <div className={`w-full  transition duration-300 ease-in-out bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-50 cursor-pointer ${activeSection === 'Welcome to Sabest' ? 'bg-gray-300' : 'bg-opacity-10'}`} onClick={() => handleTitleClick('Why Choose Us?')}>
                     <HomeSection title="Why Choose Us?" isActive={activeSection === 'Why Choose Us?'}>
                         <p>We stand out in the digital landscape by embracing simplicity. Our focused approach means we deliver top-tier web design services without the clutter of unnecessary options. We cut through the noise to provide you with what truly matters for your online success.</p>
 
                     </HomeSection>
                 </div>
-                <div className="title-container" onClick={() => handleTitleClick('Our Web Design Services')}>
+                <div className={`w-full transition duration-300 ease-in-out bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-50 cursor-pointer ${activeSection === 'Welcome to Sabest' ? 'bg-gray-300' : 'bg-opacity-10'}`} onClick={() => handleTitleClick('Our Web Design Services')}>
                     <HomeSection title="Our Web Design Services" isActive={activeSection === 'Our Web Design Services'}>
                         <p>Bespoke Design: Your brand is unique, and your website should be too. We create custom designs that align perfectly with your brand identity.
                             Responsive Layouts: With a mobile-first philosophy, we ensure your site looks and functions seamlessly on all devices.
@@ -54,7 +54,7 @@ const Home = () => {
                             to keep your visitors coming back..</p>
                     </HomeSection>
                 </div>
-                <div className="title-container" onClick={() => handleTitleClick('Our Philosophy - Simplicity in Service')}>
+                <div className={`w-full  transition duration-300 ease-in-out bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-50 cursor-pointer ${activeSection === 'Welcome to Sabest' ? 'bg-gray-300' : 'bg-opacity-50'}`} onClick={() => handleTitleClick('Our Philosophy - Simplicity in Service')}>
                     <HomeSection title="Our Philosophy - Simplicity in Service" isActive={activeSection === 'Our Philosophy - Simplicity in Service'}>
                         <p>In a world bustling with endless options, we chose a path less cluttered. Sabest embraces the power of simplicity to bring clarity and effectiveness to our work. We believe in doing fewer things exceptionally well rather than spreading ourselves too thin. This focused approach allows us to deliver top-notch designs and results-driven websites.
 
@@ -65,7 +65,7 @@ const Home = () => {
                     </HomeSection>
                 </div>
 
-                <div className="title-container" onClick={() => handleTitleClick('Ready to start your project')}>
+                <div className={`w-full  transition duration-300 ease-in-out bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-50 cursor-pointer ${activeSection === 'Welcome to Sabest' ? 'bg-gray-300' : 'bg-opacity-50'}`} onClick={() => handleTitleClick('Ready to start your project')}>
                     <HomeSection title="Ready to start your project?" isActive={activeSection === 'Ready to start your project'}>
                         Contact us today and let's create a web experience that embodies the essence of your brand.
 

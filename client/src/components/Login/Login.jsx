@@ -1,7 +1,7 @@
 import React from 'react'
-import { GoogleLogin } from 'react-google-login'
-import { useUserContext } from '../../context/UserContext'
-
+import { GoogleLogin } from 'react-google-login';
+import { useUserContext } from '../../context/UserContext';
+import './Login.css';
 
 const clientId =
     // '152826738328-v12sqe8onlto7c14emu3kgvaodgissi0.apps.googleusercontent.com'
@@ -21,7 +21,7 @@ function Login() {
             {!isSignedIn && (
                 <GoogleLogin
                     clientId={clientId}
-                    buttonText="Google Login"
+                    buttonText="Login"
                     onSuccess={onSuccess}
                     cookiePolicy={'single_host_origin'}
                 />

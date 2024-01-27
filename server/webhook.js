@@ -1,7 +1,9 @@
 
 require('dotenv').config();
-const stripe = require("stripe")(process.env.STRIPE_KEY);
-const endpointSecret = process.env.ENDPOINT_SECRET;
+const stripe = require("stripe")('sk_test_51OcPi9CUIwAO4HE3pAZh22Sif5QQTnvkyr2zXpRws3553cTKKxNHFSCvhx2nHCLNgZZFUmK54SZh7S2VnFqivHk700Wv7tYVeJ');
+// process.env.STRIPE_KEY);
+const endpointSecret = 'whsec_c3d3fe40cc8900932d74fe7a3e532b8481b907de06493124768a829214a0e84c';
+//  process.env.ENDPOINT_SECRET;
 const { OrderModel } = require('./order/order.model');
 
 

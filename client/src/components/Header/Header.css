@@ -6,7 +6,7 @@
     padding: 10px 20px;
     background-color: #201e1e;
     color: rgb(210, 213, 216);
-    height: 50px;
+    height: 12vh;
 }
 
 .logo img {
@@ -43,53 +43,12 @@
 
 .nav-menu ul li a {
     text-decoration: none;
-    color: #b00404;
-}
-
-/* .login-button button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-
-    cursor: pointer;
-}
-
-.login-button button:hover {
-    background-color: #0056b3;
-} */
-
-
-.logout {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-}
-
-
-#signinbutton button {
-    background-color: #02020300 !important;
-    /* To match your header background color */
-    color: rgb(248, 168, 168) !important;
-    /* Text color */
-    border: none !important;
-    /* Remove any default border */
-    padding: 5px 10px !important;
-    /* width: 10px !important; */
-    height: auto !important;
-
-
+    color: #c9c5c5;
+    font-size: smaller;
 }
 
 #signinbutton button:hover {
     background-color: #333;
-    /* Darker shade for hover effect */
-}
-
-/* Make sure to add 'overflow: hidden;' to '.login-button' if the button is overflowing */
-.user-info {
-    display: flex;
-    align-items: center;
 }
 
 .user-profile-image {
@@ -102,27 +61,37 @@
     /* Adjust the margin as needed */
 }
 
-/* Targeting the inner div */
 #signinbutton button div {
-    /* Your styles here, for example: */
-    background-color: #010101 !important;
-    width: 11px !important;
-    height: 11px !important;
+    /* background-color: #030303 !important; */
+
     justify-content: center !important;
     padding: 0;
+    font-size: smaller;
     /* padding: 4 !important; */
+}
 
-    /* A Google blue color */
+.logout {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    /* Adjust as needed */
+}
+
+.logout button {
+    background-color: #363535 !important;
+    color: antiquewhite !important;
+    justify-content: center !important;
+    padding: 0;
+    /* display: none; */
+    /* padding: 4 !important; */
 }
 
 
-
-/* Targeting the span directly */
-#signinbutton button span {
-    /* Your styles here, for example: */
-    color: rgb(249, 244, 244);
-    font-weight: bold;
-    font-size: x-small;
-
-
+.user-info {
+    /* background-color: rgb(121, 120, 120); */
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    /* gap: 5px; */
+    /* Adjust as needed */
 }

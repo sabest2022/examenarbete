@@ -2,8 +2,10 @@ import { useContext } from "react";
 import "./CartList.css";
 import { CartContext } from "../../context/CartContext";
 
+
 const CartList = () => {
-    const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+    const { cartItems, removeFromCart } = useContext(CartContext);
+
 
     const totalPrice = cartItems.reduce((total, item) => {
         const itemPrice = item.plan.price * item.quantity;
@@ -12,9 +14,11 @@ const CartList = () => {
 
     if (cartItems.length <= 0) {
         return <div className="empty">
-            <p>Your cart is empty</p>
+            <p>Your cart empty</p>
         </div>;
     }
+
+
 
     return (
         <div>
@@ -38,7 +42,6 @@ const CartList = () => {
                             </td>
 
                             <td className="product_action">
-                                {/* <button onClick={() => addToCart(cartItem.plan._id)}>Add More</button> */}
                                 <button onClick={() => removeFromCart(cartItem.plan)}>Remove</button>
                             </td>
                         </tr>
@@ -52,6 +55,7 @@ const CartList = () => {
                     <p>{totalPrice} kr</p>
                 </div>
             </div>
+
         </div>
     );
 };

@@ -1,0 +1,74 @@
+/* CartList.css */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: #120f0f;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #eeeded;
+}
+
+.table th {
+    background-color: #817f7f;
+}
+
+.table tr:hover {
+    background-color: #a7a4a4;
+}
+
+.product_data,
+.product_action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_action button {
+    background-color: rgb(112, 112, 112);
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product_action button:hover {
+    border-color: #888;
+}
+
+.summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.summary .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* CartList.css */
+.back-btn {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background-color: #f4f4f4;
+    /* Example background color */
+    border: 1px solid #ccc;
+    cursor: pointer;
+    /* Additional styling as needed */
+}
+
+.back-btn:hover {
+    background-color: #e2e2e2;
+    /* Slightly darker on hover */
+}

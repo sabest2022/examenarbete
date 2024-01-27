@@ -3,15 +3,26 @@ import { useContext } from "react";
 import { ImCross } from "react-icons/im";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context/CartContext"; // Make sure this path is correct
+import { CartContext } from "../../context/CartContext";
+import { useUserContext } from "../../context/UserContext";// Make sure this path is correct
 
 const CartPopup = ({ closeCartPopup }) => {
-    const { cartItems, addToCart, removeFromCart, clearCart } = useContext(CartContext);
-    console.log(cartItems);
+    const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+    const { isSignedIn } = useUserContext();
+
     const totalPrice = cartItems.reduce((total, item) => {
         const itemPrice = item.plan.price * item.quantity;
         return total + (itemPrice || 0);
     }, 0);
+    const handleCheckout = () => {
+        if (!isSignedIn) {
+            // Prompt user to sign in
+            alert("Please sign in to proceed to checkout.");
+            return;
+        }
+        closeCartPopup();
+        // Proceed with navigation to checkout page
+    };
 
     return (
         <div className="CartPopup__container">
@@ -44,11 +55,16 @@ const CartPopup = ({ closeCartPopup }) => {
             <div className="cart-item-footer">
                 <p>Total price: {totalPrice} kr</p>
                 <div className="cart-item-footer-btns">
-                    <Link to={"/checkout"}>
-                        <button onClick={closeCartPopup} disabled={cartItems.length ===
-                            0}>Checkout</button>
-                    </Link>
+                    {isSignedIn ? (
+                        <Link to={"/checkout"}>
+                            <button onClick={handleCheckout} disabled={cartItems.length ===
+                                0}>Checkout</button>
+                        </Link>
+                    ) : (
+                        <button onClick={handleCheckout}>Sign in to Checkout</button>
+                    )}
                     <button onClick={clearCart}>Clear cart</button>
+
                 </div>
             </div>
         </div>

@@ -1,0 +1,36 @@
+.cart-icon__container {
+    position: relative;
+    display: inline-block;
+    /* or 'flex' depending on your layout */
+}
+
+.cart-icon__content {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon__content button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cart-icon__content span {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 0.5rem;
+    /* Adjust size as needed */
+    width: 12px;
+    /* Adjust size as needed */
+    height: 12px;
+    /* Adjust size as needed */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}

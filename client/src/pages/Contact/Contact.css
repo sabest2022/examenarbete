@@ -1,10 +1,12 @@
 .contact-form {
-    max-width: 600px;
+    width: 50vh;
+    height: 80vh;
     margin: 2rem auto;
     padding: 2rem;
-    background: #fff;
+    background: #8f8f8f5a;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #494848;
 }
 
 .contact-form div {
@@ -22,9 +24,10 @@
 .contact-form textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid #9c9a9a;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #edecec9b;
     /* Prevents padding from affecting width */
     margin-bottom: 1rem;
 }
@@ -32,7 +35,7 @@
 .contact-form textarea {
     resize: vertical;
     /* Allows vertical resizing, typically a good UX decision */
-    min-height: 150px;
+    /* min-height: 150px; */
 }
 
 .contact-form button[type="submit"] {

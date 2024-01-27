@@ -18,8 +18,6 @@ const createOrder = async (req, res) => {
 
   try {
     //this line has to be change and implemen on a way that we can retrive the Stripe customerid from our database, for that should we register all user on stripe and simultenously on our databse.
-
-
     const session = await stripe.checkout.sessions.create({
       customer: stripeCustomerId,
       line_items: orderItems.map(item => {
@@ -53,49 +51,6 @@ const createOrder = async (req, res) => {
     res.status(400).send("Internam server ERROR");
   }
 };
-
-
-
-async function createOrders(req, res, next) {
-  try {
-    console.log(req.body);
-    const { customer, orderItems, totalprice, address, customerName, customerEmail, stripeCustomerId } = req.body;
-    console.log('stripeCustomerId', stripeCustomerId);
-    const order = new OrderModel({
-      customer: customer,
-      customerName: customerName,
-      customerEmail: customerEmail,
-      stripeCustomerId: stripeCustomerId,
-      orderItems: orderItems,
-      totalprice: totalprice,
-      date: new Date(), // Use server's date or from req.body
-      address: address,
-      delivered: false
-    });
-
-    // Optionally validate each plan and recalculate the total price
-    let recalculatedTotalPrice = 0;
-    for (let orderItem of order.orderItems) {
-      let plan = await PlanModel.findById(orderItem.plan);
-      if (!plan) {
-        return res.status(404).json({ message: 'Plan not found' });
-      }
-      // Recalculate the price for security
-      recalculatedTotalPrice += plan.price;
-    }
-
-    // Optionally, set totalprice to recalculatedTotalPrice for security
-    order.totalprice = recalculatedTotalPrice;
-
-    await order.save();
-    res.status(201).json(order);
-  } catch (err) {
-    console.error('Error creating order:', err);
-    res.status(500).json({ message: 'Error creating order', error: err });
-  }
-}
-
-
 // ----- Get user orders or all orders as an admin
 
 async function getAllOrders(req, res) {
@@ -118,8 +73,6 @@ async function getUserAllOrders(req, res) {
   }
 }
 
-
-
 // ----- get a specific user order as admin or a user's own order by ID
 async function getOrderId(req, res) {
   const orderId = req.params.id; // Get order ID from route parameters
@@ -138,8 +91,6 @@ async function getOrderId(req, res) {
     res.status(500).json({ message: "Error retrieving order", error: error.message });
   }
 }
-
-
 
 async function isDelivered(req, res) {
   const order = await OrderModel.findById({ _id: req.params.id });
