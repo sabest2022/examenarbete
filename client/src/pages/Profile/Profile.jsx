@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CreateUserForm from '../../components/Admin/AdminComponent/User/CreateUserform';
+import EditUserForm from './EditUserForm';
 import './Profile.css';
 import { useUserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -47,7 +47,7 @@ const UserProfile = () => {
             {user && (
                 editing ? (
                     // Render the EditUserForm when editing
-                    <CreateUserForm
+                    <EditUserForm
                         updateUser={handleUpdateUser}
                         editingUser={user}
                         onClose={() => setEditing(false)}
