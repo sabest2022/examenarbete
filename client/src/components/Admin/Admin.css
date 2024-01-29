@@ -8,10 +8,15 @@
 }
 
 .dashboard-sections {
-    background-color: rgba(18, 18, 20, 0.811);
+    background-color: rgba(81, 81, 83, 0.811);
     padding: 5vh;
 }
 
 h1 {
     color: blueviolet;
+}
+
+.dashboard-sections div {
+    margin: 10px;
+    padding: 1vh;
 }

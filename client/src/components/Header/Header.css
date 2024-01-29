@@ -1,17 +1,20 @@
 .header {
-    margin-top: 0;
+    margin-top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #201e1e;
+    background-color: #0d0c0c;
     color: rgb(210, 213, 216);
     height: 12vh;
+    margin-bottom: 18px;
 }
 
 .logo img {
-    height: 50px;
-    margin-right: 30px;
+    margin-top: 10px;
+    height: 15vh;
+    min-width: 15vh;
+    margin-left: 3rem;
     /* Adjust size as needed */
 }
 
@@ -48,7 +51,7 @@
 }
 
 #signinbutton button:hover {
-    background-color: #333;
+    background-color: #ece6e6;
 }
 
 .user-profile-image {

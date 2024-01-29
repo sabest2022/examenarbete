@@ -12,15 +12,12 @@ const Admin = () => {
             <h2>Admin Dashboard</h2>
             <div className="dashboard-sections">
                 <div>
-
                     <Plans />
                 </div>
                 <div>
-
                     <OrderList />
                 </div>
                 <div>
-
                     <UserList />
                 </div>
             </div>

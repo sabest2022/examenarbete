@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useOrderContext } from '../../context/OrderContext';
-
+import './tables.css'
 
 const OrderList = () => {
     const { orders, fetchAllOrders } = useOrderContext();
