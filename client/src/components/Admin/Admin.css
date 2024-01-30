@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     padding: 5vh;
-    background-color: rgba(16, 16, 55, 0.811);
+    background-color: rgba(241, 241, 242, 0.811);
 }
 
 .dashboard-sections {
@@ -19,4 +19,43 @@ h1 {
 .dashboard-sections div {
     margin: 10px;
     padding: 1vh;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #2f2e2e;
+    /* Example background color */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-profile-image {
+    width: 50px;
+    /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%;
+    /* Circular image */
+    margin-right: 10px;
+}
+
+.user-profile-link {
+    text-decoration: none;
+    /* Remove underlining of link */
+    color: #333;
+    /* Text color */
+}
+
+.profile-hover-text {
+    display: none;
+}
+
+.user-profile-link:hover .profile-hover-text {
+    display: block;
+    /* Show on hover */
+}
+
+.welcome {
+    margin: 0;
+    font-weight: bold;
 }
