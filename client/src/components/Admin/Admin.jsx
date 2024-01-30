@@ -22,7 +22,11 @@ const Admin = () => {
     };
 
     if (!isSignedIn) {
-        return <LoginButton />; // Make sure LoginButton is defined or imported
+        return (
+            <div className="login-container"> <LoginButton />
+                <div> Sign in into admin panel with your SuperAdmin account</div>
+
+            </div>);
     }
 
     if (!currentUser.isAdmin) {

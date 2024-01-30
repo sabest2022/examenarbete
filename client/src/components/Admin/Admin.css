@@ -5,6 +5,7 @@
     flex-direction: column;
     padding: 5vh;
     background-color: rgba(241, 241, 242, 0.811);
+
 }
 
 .dashboard-sections {
@@ -28,6 +29,7 @@ h1 {
     /* Example background color */
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 .user-profile-image {
@@ -58,4 +60,16 @@ h1 {
 .welcome {
     margin: 0;
     font-weight: bold;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    /* Background color, adjust as needed */
 }
