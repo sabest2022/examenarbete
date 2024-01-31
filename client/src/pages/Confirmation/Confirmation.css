@@ -1,0 +1,70 @@
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+    text-align: center;
+    /* Center the text horizontally */
+    background-color: #f2f2f2;
+    /* Example background color */
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Align items in the center */
+}
+
+.centered-title {
+    font-size: 28px;
+    /* Example font size */
+    margin-bottom: 20px;
+    /* Space between title and button */
+}
+
+.centered-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    /* Example button color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.centered-button:hover {
+    background-color: #0056b3;
+    /* Darker shade for hover */
+}
+
+.content-text {
+    border: solid 1px;
+    margin: 2rem;
+    font-size: 16px;
+    padding: 1rem;
+    /* Adjust font size as needed */
+    text-align: left;
+    /* Align text to the left */
+    margin-bottom: 10px;
+    /* Space between paragraphs */
+}
+
+.centered-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Keep title centered */
+}
+
+.username {
+    color: #007bff;
+}
+
+.color {
+    color: chocolate;
+}

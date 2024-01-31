@@ -29,8 +29,13 @@ const Admin = () => {
             </div>);
     }
 
+    if (!currentUser) {
+        // Handle scenario when currentUser is null
+        return <div>Loading...</div>; // or any other fallback UI
+    }
+
     if (!currentUser.isAdmin) {
-        return <div>Access Denied: You must be an admin to view this page.</div>;
+        return <div className='denied'>Access Denied: You must be an admin to view this page.</div>;
     }
 
     return (

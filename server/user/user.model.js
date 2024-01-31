@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   stripeCustomerId: { type: String, default: null },
   imageUrl: { type: String, required: false, default: 'defaultValue' },
   password: { type: String, required: false, default: 'dfhdthdthgdhfgnghfgfhnfghnbfgffrrtjkuk' },
-  telephone: { type: Number, required: false, default: 0 },
+  telephone: { type: Number, required: false, default: '' },
   isAdmin: { type: Boolean, required: false, default: false },
   balance: { type: Number, required: false, default: 0 },
   deliveryAddress: [{ type: AddressSchema, required: true }] // Wrap AddressSchema in an array
