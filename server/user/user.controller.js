@@ -36,9 +36,7 @@ async function googleLogin(req, res) {
   const { token } = req.body;
   try {
     const googleUser = await verify(token);
-
     let user;
-
     try {
       user = await UserModel.findOne({ email: googleUser.email });
 
@@ -97,15 +95,12 @@ async function getUser(req, res) {
   console.log('get UserName triggers!');
   const userId = req.params.id;
   try {
-
     const user = await UserModel.findById(userId);
-
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     res.status(200).json(user);
-    console.log(user);
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -2,18 +2,13 @@
 
 const { OrderModel } = require('./order.model');
 const { PlanModel } = require("../plan/plan.model");
-const { configDotenv } = require('dotenv');
+// const { configDotenv } = require('dotenv');
 const CLIENT_URL = "http://localhost:5173"
-
-
-// ----- Creates a new order
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
-// ... Other dependencies and middleware ...
-
+// ----- Creates a new order
 // const createCheckoutSession 
 const createOrder = async (req, res) => {
-  // console.log('Const Stripe:', stripe);
   const { customer, orderItems, totalprice, stripeCustomerId, customerName, customerEmail } = req.body;
 
   try {

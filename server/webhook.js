@@ -1,20 +1,17 @@
 
 require('dotenv').config();
-const stripe = require("stripe")('sk_test_51OcPi9CUIwAO4HE3pAZh22Sif5QQTnvkyr2zXpRws3553cTKKxNHFSCvhx2nHCLNgZZFUmK54SZh7S2VnFqivHk700Wv7tYVeJ');
-// process.env.STRIPE_KEY);
-const endpointSecret = 'whsec_c3d3fe40cc8900932d74fe7a3e532b8481b907de06493124768a829214a0e84c';
-//  process.env.ENDPOINT_SECRET;
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+const endpointSecret = process.env.ENDPOINT_SECRET;
 const { OrderModel } = require('./order/order.model');
 
 
 const handleWebhook = async (request, response) => {
-    console.log('webhook triggers!')
+
     const sig = request.headers['stripe-signature'];
     let event;
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
     } catch (err) {
-        console.error(err.stack);
         response.status(400).send(`Webhook Error: ${err.message}`);
         return;
     }
@@ -75,11 +72,11 @@ const handleWebhook = async (request, response) => {
 
         case 'charge.succeeded':
             const chargeSucceded = event.data.object;
-            // console.log("chargeSucceded", chargeSucceded);
+
             break;
         case 'payment_intent.created':
             const paymentIntentCreated = event.data.object;
-            // console.log("paymentIntentCreated", paymentIntentCreated);
+
             break;
         // ... handle other event types
         default:
