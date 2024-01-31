@@ -89,8 +89,6 @@ async function googleLogout(req, res) {
   }
 }
 
-
-
 async function getUser(req, res) {
   console.log('get UserName triggers!');
   const userId = req.params.id;
