@@ -1,25 +1,25 @@
-##Sabest
-##Brief Description
+# Sabest
+
+## Brief Description
 This is my final project for a two-year study in web development, focusing on e-commerce. The project is a full e-commerce solution featuring dynamic front-end design with React, a Node.js-Express server, Stripe for payment processing, Google Login for authentication, and MongoDB for the database.
 
-##Getting Started
+## Getting Started
 These instructions will guide you in setting up the project on your local machine for development purposes.
 
-##Prerequisites
+## Prerequisites
 Before starting, ensure you have the following installed:
 
-Node.js: Download and install from Node.js.
-Git: Download and install from Git.
-Installation
+- **Node.js**: Download and install from [Node.js](https://nodejs.org/).
+- **Git**: Download and install from [Git](https://git-scm.com/).
 
-##Clone the repository to your local machine:
+## Installation
 
-bash
-Copy code
+### Clone the repository to your local machine:
+```bash
 git clone https://github.com/sabest2022/examenarbete.git
 
 ##Set up the Server:
-Navigate to the server directory:
+## Navigate to the server directory:
 
 bash
 Copy code
