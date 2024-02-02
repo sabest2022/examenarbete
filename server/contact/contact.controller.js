@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 
-
 const transporter = nodemailer.createTransport({
     host: 'smtp.simply.com',
     port: 587,
@@ -10,16 +9,20 @@ const transporter = nodemailer.createTransport({
         pass: 'saeedA93',
     },
 });
+
 async function register(req, res) {
     const { name, email, message } = req.body;
-
     // Set up the email data
     const mailOptions = {
-        from: email,
+        from: 't1@brfsmedby.se',
         to: 't1@brfsmedby.se',
         subject: `New message from ${name}`,
-        text: message,
-        // You can use html: `<p>${message}</p>` to send as HTML
+        html: `<div style="background-color: gray; padding: 20px; color: black;">
+        <p style="margin-bottom: 10px;"><strong>Sender:</strong> ${email}</p>
+        <p style="margin-bottom: 10px;"><strong>Name:</strong> ${name}</p>
+        <p style="margin-bottom: 10px;"><strong>Message:</strong><br>${message.split('\n').join('<br>')}</p>
+    </div>`,
+        //  can use html: `<p>${message}</p>` to send as HTML
     };
 
     // Send the email

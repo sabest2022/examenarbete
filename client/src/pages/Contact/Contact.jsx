@@ -6,6 +6,7 @@ import './Contact.css';
 
 
 const ContactForm = () => {
+    const [responseMessage, setResponseMessage] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,6 +27,7 @@ const ContactForm = () => {
 
         axios.post(endpoint, formData)
             .then(response => {
+                setResponseMessage('Message sent successfully!');
                 console.log(response.data);
                 // Handle success, such as showing a success message
                 // Reset the form data
@@ -79,6 +81,7 @@ const ContactForm = () => {
                 />
             </div>
             <button type="submit">Send</button>
+            {responseMessage && <div className="response-message">{responseMessage}</div>}
         </form>
     );
 };

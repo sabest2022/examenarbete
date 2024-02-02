@@ -84,3 +84,10 @@
         width: 100%;
     }
 }
+
+.response-message {
+    margin-top: 20px;
+    color: green;
+    /* or red for error messages */
+    font-weight: bold;
+}
