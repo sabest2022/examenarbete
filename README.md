@@ -60,12 +60,12 @@ Create a .env file in both the client and server directories with the necessary 
 ## Server (server/.env):
 makefile
 Copy code
-DB_HOST=mongodb://127.0.0.1:27017/
-DB_NAME=YourDatabaseName
-ENDPOINT_SECRET=YourGoogleEndpointKey
-MONGO_ATLAS=[MONGO ATLAS URL]
-STRIPE_KEY=YourStripeSecretKey
-CLIENT_URL=http://localhost:5173
+DB_HOST=mongodb://127.0.0.1:27017/  \
+DB_NAME=YourDatabaseName \
+ENDPOINT_SECRET=YourGoogleEndpointKey \
+MONGO_ATLAS=[MONGO ATLAS URL] \
+STRIPE_KEY=YourStripeSecretKey \
+CLIENT_URL=http://localhost:5173 \
 
 ## Client (client/.env):
 makefile
@@ -74,11 +74,12 @@ VITE_REACT_APP_GOOGLE_CLIENT_ID=YourGoogleClientId
 
 
 ## Built With
-React - The web framework used for the client-side. 
-Node.js - Server environment. 
-Express - Web framework for Node.js. 
-MongoDB - Database. 
-Other technologies/libraries: TailwindCSS, Stripe, Google Login, etc. 
+- **React** - The web framework used for the client-side.
+- **Node.js** - Server environment.
+- **Express** - Web framework for Node.js.
+- **MongoDB** - Database.
+- **Other technologies/libraries:** TailwindCSS, Stripe, Google Login, etc.
+
 
 ## Contributing:
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
