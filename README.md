@@ -74,12 +74,13 @@ VITE_REACT_APP_GOOGLE_CLIENT_ID=YourGoogleClientId
 
 
 ## Built With
-React - The web framework used for the client-side.
-Node.js - Server environment.
-Express - Web framework for Node.js.
-MongoDB - Database.
-Other technologies/libraries: TailwindCSS, Stripe, Google Login, etc.
-Contributing
+React - The web framework used for the client-side. 
+Node.js - Server environment. 
+Express - Web framework for Node.js. 
+MongoDB - Database. 
+Other technologies/libraries: TailwindCSS, Stripe, Google Login, etc. 
+
+## Contributing:
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
 
 ## Authors
