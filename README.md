@@ -20,46 +20,46 @@ git clone https://github.com/sabest2022/examenarbete.git
 ```
 ## Set up the Server:
 Navigate to the server directory:
-bash
-Copy code
+bash\
+Copy code\
 cd examenarbete/server
 
 ## Install server dependencies:
 
-bash
-Copy code
+bash\
+Copy code\
 npm install
 
 Start the server (by default, it will start on http://localhost:3000):
 
-bash
-Copy code
+bash\
+Copy code\
 npm start
 
 ## Set up the Client:
 In a new terminal window/tab, navigate to the client directory:
 
-bash
-Copy code
+bash\
+Copy code\
 cd examenarbete/client
 
 Install client dependencies:
 
-bash
-Copy code
+bash\
+Copy code\
 npm install
 Run the client application (by default, it will start on http://localhost:5173):
 
-bash
-Copy code
+bash\
+Copy code\
 npm run dev
-Environment Variables
+Environment Variables\
 
-Create a .env file in both the client and server directories with the necessary environment variables:
+## Create a .env file in both the client and server directories with the necessary environment variables:
 
 ## Server (server/.env):
-makefile
-Copy code
+makefile\
+Copy code\
 DB_HOST=mongodb://127.0.0.1:27017/  \
 DB_NAME=YourDatabaseName \
 ENDPOINT_SECRET=YourGoogleEndpointKey \
@@ -68,8 +68,8 @@ STRIPE_KEY=YourStripeSecretKey \
 CLIENT_URL=http://localhost:5173 \
 
 ## Client (client/.env):
-makefile
-Copy code
+makefile\
+Copy code \
 VITE_REACT_APP_GOOGLE_CLIENT_ID=YourGoogleClientId
 
 
@@ -85,7 +85,7 @@ VITE_REACT_APP_GOOGLE_CLIENT_ID=YourGoogleClientId
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
 
 ## Authors
-Saeed Askarian
-License
+Saeed Askarian\
+License:\
 This project is licensed under the Sabest License.
 
