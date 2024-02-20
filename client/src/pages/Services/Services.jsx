@@ -4,7 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { usePlanContext } from '../../context/PlanContext';
 
-import "./services.css";
+import "./Services.css";
 
 const Services = () => {
 

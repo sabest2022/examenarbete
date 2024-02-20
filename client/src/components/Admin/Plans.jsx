@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './tables.css';
+import './Tables.css';
 import CreatePlanForm from './AdminComponent/Plans/CreatePlanForm';
 import { usePlanContext } from '../../context/PlanContext';
 

@@ -1,5 +1,5 @@
 import { ImCart } from "react-icons/im";
-import "./CartIcon.css";
+import "./Carticon.css";
 import CartPopup from "../CartPopup/CartPopup";
 import { useState, useContext } from "react"
 import { CartContext } from "../../context/CartContext";
